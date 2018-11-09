@@ -51,7 +51,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">DP(\d{8})</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -182,11 +182,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">615991392000000000</value>
+                <value type="string">633347424000000000</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">633346560000000000</value>
+                <value type="string">636712704000000000</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -265,11 +265,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">615991392000000000</value>
+                <value type="string">633347424000000000</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">633346560000000000</value>
+                <value type="string">636712704000000000</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -348,11 +348,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">615991392000000000</value>
+                <value type="string">633347424000000000</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">633346560000000000</value>
+                <value type="string">636712704000000000</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -385,33 +385,18 @@ Version:4.1.0.1596-->
           <Scale>0</Scale>
           <DefinedSize>4</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int32Generator</GeneratorTypeName>
-            <DisplayName>int</DisplayName>
-            <Description>Generates int (32-bit) values</Description>
-            <CategoryName>SQL Type</CategoryName>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
+            <DisplayName>Regex Generator</DisplayName>
+            <Description>Generates data from a Regular Expression</Description>
+            <CategoryName>Generic</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Increment</key>
-                <value type="string">1</value>
+                <key type="string">Expression</key>
+                <value type="string">([1-9]{1})+(\d)+([0]{4,5})
+</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">-2147483648</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">2147483647</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
                 <value type="string">False</value>
               </element>
               <element>
@@ -425,6 +410,10 @@ Version:4.1.0.1596-->
               <element>
                 <key type="string">Seed</key>
                 <value type="string">6</value>
+              </element>
+              <element>
+                <key type="string">Unique</key>
+                <value type="string">False</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -448,7 +437,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string" />
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -492,7 +481,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">đã xác nhận|chưa xác nhận</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -523,11 +512,11 @@ Version:4.1.0.1596-->
           <Fields type="List&lt;string&gt;" version="1">
             <value type="string">maKH</value>
           </Fields>
-          <ForeignKeyFillMethod>RepeatForever</ForeignKeyFillMethod>
+          <ForeignKeyFillMethod>RepeatBetweenMinandMax</ForeignKeyFillMethod>
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
-          <MaxRepeats>10</MaxRepeats>
+          <MaxRepeats>5</MaxRepeats>
           <NullsAllowed>True</NullsAllowed>
           <NullProportion>0.01</NullProportion>
         </value>
@@ -535,11 +524,11 @@ Version:4.1.0.1596-->
           <Fields type="List&lt;string&gt;" version="1">
             <value type="string">maLoaiPhong</value>
           </Fields>
-          <ForeignKeyFillMethod>RepeatForever</ForeignKeyFillMethod>
+          <ForeignKeyFillMethod>RepeatBetweenMinandMax</ForeignKeyFillMethod>
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
-          <MaxRepeats>10</MaxRepeats>
+          <MaxRepeats>3000</MaxRepeats>
           <NullsAllowed>True</NullsAllowed>
           <NullProportion>0.01</NullProportion>
         </value>
@@ -581,7 +570,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">HD(\d){8}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -664,11 +653,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">615991392000000000</value>
+                <value type="string">633347424000000000</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">633346560000000000</value>
+                <value type="string">636712704000000000</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -701,38 +690,22 @@ Version:4.1.0.1596-->
           <Scale>0</Scale>
           <DefinedSize>4</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int32Generator</GeneratorTypeName>
-            <DisplayName>int</DisplayName>
-            <Description>Generates int (32-bit) values</Description>
-            <CategoryName>SQL Type</CategoryName>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
+            <DisplayName>Regex Generator</DisplayName>
+            <Description>Generates data from a Regular Expression</Description>
+            <CategoryName>Generic</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Increment</key>
-                <value type="string">1</value>
+                <key type="string">Expression</key>
+                <value type="string">([1-9]{1})+(\d)+([0]{4,5})</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
                 <value type="string">False</value>
               </element>
               <element>
-                <key type="string">Unique</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">-2147483648</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">2147483647</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
-                <value type="string">False</value>
-              </element>
-              <element>
                 <key type="string">NullsAllowed</key>
-                <value type="string">True</value>
+                <value type="string">False</value>
               </element>
               <element>
                 <key type="string">NullProportion</key>
@@ -741,6 +714,10 @@ Version:4.1.0.1596-->
               <element>
                 <key type="string">Seed</key>
                 <value type="string">1026</value>
+              </element>
+              <element>
+                <key type="string">Unique</key>
+                <value type="string">False</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -775,7 +752,7 @@ Version:4.1.0.1596-->
           <Fields type="List&lt;string&gt;" version="1">
             <value type="string">maDP</value>
           </Fields>
-          <ForeignKeyFillMethod>RepeatForever</ForeignKeyFillMethod>
+          <ForeignKeyFillMethod>Unique</ForeignKeyFillMethod>
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
@@ -1645,7 +1622,7 @@ Version:4.1.0.1596-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>200</RowCount>
+        <RowCount>2000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -1677,7 +1654,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">STD|SUP|DLX|SUT|CNT</value>
+                <value type="string">(STD|SUP|DLX|SUT|CNT)(\d){7}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1721,7 +1698,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">Phòng Standard|Phòng Superior|Phòng Deluxe|Phòng Suite|Connecting room</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1833,7 +1810,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">\w*</value>
+                <value type="string">($"MoTaLoaiPhong.txt")</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1893,7 +1870,7 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">15000</value>
+                <value type="string">100</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -1924,7 +1901,7 @@ Version:4.1.0.1596-->
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
-          <MaxRepeats>10</MaxRepeats>
+          <MaxRepeats>20</MaxRepeats>
           <NullsAllowed>True</NullsAllowed>
           <NullProportion>0.01</NullProportion>
         </value>
@@ -2199,7 +2176,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">\d{5}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -2267,7 +2244,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">[A-Z](\d){3}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -2283,7 +2260,7 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">6147</value>
+                <value type="string">6146</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -2298,11 +2275,11 @@ Version:4.1.0.1596-->
           <Fields type="List&lt;string&gt;" version="1">
             <value type="string">loaiPhong</value>
           </Fields>
-          <ForeignKeyFillMethod>RepeatForever</ForeignKeyFillMethod>
+          <ForeignKeyFillMethod>RepeatBetweenMinandMax</ForeignKeyFillMethod>
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
-          <MaxRepeats>10</MaxRepeats>
+          <MaxRepeats>15</MaxRepeats>
           <NullsAllowed>True</NullsAllowed>
           <NullProportion>0.01</NullProportion>
         </value>
@@ -2407,11 +2384,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">615991392000000000</value>
+                <value type="string">633347424000000000</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">633346560000000000</value>
+                <value type="string">636712704000000000</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -2451,7 +2428,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">đang sử dụng|đang bảo trì|còn trống</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -2482,11 +2459,11 @@ Version:4.1.0.1596-->
           <Fields type="List&lt;string&gt;" version="1">
             <value type="string">maPhong</value>
           </Fields>
-          <ForeignKeyFillMethod>Unique</ForeignKeyFillMethod>
+          <ForeignKeyFillMethod>RepeatBetweenMinandMax</ForeignKeyFillMethod>
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
-          <MaxRepeats>10</MaxRepeats>
+          <MaxRepeats>20</MaxRepeats>
           <NullsAllowed>False</NullsAllowed>
           <NullProportion>0.01</NullProportion>
         </value>

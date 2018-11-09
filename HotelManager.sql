@@ -155,6 +155,19 @@ FOREIGN KEY (maDP)
 REFERENCES DatPhong(maDP)
 GO
 
+-------------------------------------------------
+--CREATE TABLE
+
+ALTER TABLE TrangThaiPhong
+ADD CONSTRAINT CHK_tinhtrang
+CHECK (tinhtrang in (N'đang sử dụng', N'đang bảo trì', N'còn trống'))
+GO
+
+ALTER TABLE DatPhong
+ADD CONSTRAINT CHK_tinhtrang
+CHECK (tinhtrang in (N'đã xác nhận', N'chưa xác nhận'))
+GO
+
 ------------------------------------------
 -- PROCEDURE
 /*
