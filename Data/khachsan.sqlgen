@@ -909,7 +909,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Za-z0-9]*</value>
+                <value type="string">[A-Za-z0-9]{8,30}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -953,7 +953,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]{8}[A-Z0-9]*</value>
+                <value type="string">\w{8,30}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1562,33 +1562,17 @@ Version:4.1.0.1596-->
           <Scale>0</Scale>
           <DefinedSize>4</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int32Generator</GeneratorTypeName>
-            <DisplayName>int</DisplayName>
-            <Description>Generates int (32-bit) values</Description>
-            <CategoryName>SQL Type</CategoryName>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
+            <DisplayName>Regex Generator</DisplayName>
+            <Description>Generates data from a Regular Expression</Description>
+            <CategoryName>Generic</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Increment</key>
-                <value type="string">1</value>
+                <key type="string">Expression</key>
+                <value type="string">([1-9]{1})+(\d)+([0]{4,5})</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">500000</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">5000000</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
                 <value type="string">False</value>
               </element>
               <element>
@@ -1601,7 +1585,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">100000</value>
+                <value type="string">3079</value>
+              </element>
+              <element>
+                <key type="string">Unique</key>
+                <value type="string">False</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -1794,33 +1782,17 @@ Version:4.1.0.1596-->
           <Scale>0</Scale>
           <DefinedSize>4</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int32Generator</GeneratorTypeName>
-            <DisplayName>int</DisplayName>
-            <Description>Generates int (32-bit) values</Description>
-            <CategoryName>SQL Type</CategoryName>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
+            <DisplayName>Regex Generator</DisplayName>
+            <Description>Generates data from a Regular Expression</Description>
+            <CategoryName>Generic</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Increment</key>
-                <value type="string">10000</value>
+                <key type="string">Expression</key>
+                <value type="string">([1-9]{1})+(\d)+([0]{4,5})</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">500000</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">5000000</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
                 <value type="string">False</value>
               </element>
               <element>
@@ -1833,7 +1805,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">500000</value>
+                <value type="string">4099</value>
+              </element>
+              <element>
+                <key type="string">Unique</key>
+                <value type="string">False</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -2078,7 +2054,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">[A-Za-z0-9]{8,30}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -2086,7 +2062,7 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">NullsAllowed</key>
-                <value type="string">True</value>
+                <value type="string">False</value>
               </element>
               <element>
                 <key type="string">NullProportion</key>
@@ -2122,7 +2098,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">\w{8,30}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -2130,7 +2106,7 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">NullsAllowed</key>
-                <value type="string">True</value>
+                <value type="string">False</value>
               </element>
               <element>
                 <key type="string">NullProportion</key>
