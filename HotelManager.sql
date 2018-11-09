@@ -1,4 +1,4 @@
-﻿-- Doan Quang Tuan
+﻿
 
 CREATE DATABASE QUANLYKHACHSAN
 GO
@@ -12,7 +12,7 @@ GO
 
 CREATE TABLE KhachHang (
 	maKH char(10),
-	hoTen nvarchar(50),--50
+	hoTen nvarchar(50),
 	tenDangNhap varchar(30),
 	matKhau varchar(30),
 	soCMND varchar(10),
@@ -157,7 +157,7 @@ GO
 
 ------------------------------------------
 -- PROCEDURE
-
+/*
 CREATE PROCEDURE SP_DatPhong @maLoaiPhong char(3), @maKH char(10), @ngayBatDau datetime, @ngayTraPhong datetime
 AS
 	IF (NOT EXISTS(SELECT * FROM KhachHang WHERE maKH=@maKH))
@@ -176,3 +176,4 @@ AS
 	SET @moTa = (SELECT moTa FROM LoaiPhong WHERE maLoaiPhong=@maLoaiPhong)
 	INSERT INTO DatPhong(maDP, maLoaiPhong, maKH, ngayBatDau, ngayTraPhong, ngayDat, donGia, moTa, tinhTrang) VALUES (@maDP , @maLoaiPhong, @maKH, @ngayBatDau, @ngayTraPhong, @ngayDat, @donGia, @moTa, N'chưa xác nhận')
 	RETURN @maDP
+*/

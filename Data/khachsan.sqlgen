@@ -5,7 +5,7 @@ SQL Data Generator
 Version:4.1.0.1596-->
 <Project version="2" type="SDGProject">
   <DataSource version="4" type="LiveDatabaseSource">
-    <ServerName>DESKTOP-O5VB9S0\TUAN</ServerName>
+    <ServerName>DESKTOP-TVEI7G0</ServerName>
     <DatabaseName>QUANLYKHACHSAN</DatabaseName>
     <Username />
     <SavePassword>False</SavePassword>
@@ -19,7 +19,7 @@ Version:4.1.0.1596-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>6000000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -39,38 +39,22 @@ Version:4.1.0.1596-->
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Integer32</SqlType>
-          <Precision>10</Precision>
+          <SqlType>Char</SqlType>
+          <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>4</DefinedSize>
+          <DefinedSize>10</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int32Generator</GeneratorTypeName>
-            <DisplayName>int</DisplayName>
-            <Description>Generates int (32-bit) values</Description>
-            <CategoryName>SQL Type</CategoryName>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
+            <DisplayName>Regex Generator</DisplayName>
+            <Description>Generates data from a Regular Expression</Description>
+            <CategoryName>Generic</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Increment</key>
-                <value type="string">1</value>
+                <key type="string">Expression</key>
+                <value type="string">[A-Z0-9]*</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">-2147483648</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">2147483647</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
                 <value type="string">False</value>
               </element>
               <element>
@@ -83,7 +67,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">0</value>
+                <value type="string">9</value>
+              </element>
+              <element>
+                <key type="string">Unique</key>
+                <value type="string">True</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -98,7 +86,7 @@ Version:4.1.0.1596-->
           <SqlType>Char</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>3</DefinedSize>
+          <DefinedSize>10</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>
@@ -495,7 +483,7 @@ Version:4.1.0.1596-->
           <SqlType>NVarchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>20</DefinedSize>
+          <DefinedSize>13</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -561,7 +549,7 @@ Version:4.1.0.1596-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>5000000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -581,38 +569,22 @@ Version:4.1.0.1596-->
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Integer32</SqlType>
-          <Precision>10</Precision>
+          <SqlType>Char</SqlType>
+          <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>4</DefinedSize>
+          <DefinedSize>10</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int32Generator</GeneratorTypeName>
-            <DisplayName>int</DisplayName>
-            <Description>Generates int (32-bit) values</Description>
-            <CategoryName>SQL Type</CategoryName>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
+            <DisplayName>Regex Generator</DisplayName>
+            <Description>Generates data from a Regular Expression</Description>
+            <CategoryName>Generic</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Increment</key>
-                <value type="string">1</value>
+                <key type="string">Expression</key>
+                <value type="string">[A-Z0-9]*</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">-2147483648</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">2147483647</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
                 <value type="string">False</value>
               </element>
               <element>
@@ -625,7 +597,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">1024</value>
+                <value type="string">1028</value>
+              </element>
+              <element>
+                <key type="string">Unique</key>
+                <value type="string">True</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -776,10 +752,10 @@ Version:4.1.0.1596-->
           <ForeignKey>True</ForeignKey>
           <Unique>False</Unique>
           <AllowsNulls>True</AllowsNulls>
-          <SqlType>Integer32</SqlType>
-          <Precision>10</Precision>
+          <SqlType>Char</SqlType>
+          <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>4</DefinedSize>
+          <DefinedSize>10</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>
@@ -845,7 +821,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">KH[0-9]*</value>
+                <value type="string">KH[0-9]{8}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -880,7 +856,7 @@ Version:4.1.0.1596-->
           <SqlType>NVarchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>30</DefinedSize>
+          <DefinedSize>50</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Full Names</DisplayName>
@@ -924,7 +900,7 @@ Version:4.1.0.1596-->
           <SqlType>Varchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>20</DefinedSize>
+          <DefinedSize>30</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -933,7 +909,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">[A-Za-z0-9]*</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -968,7 +944,7 @@ Version:4.1.0.1596-->
           <SqlType>Varchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>20</DefinedSize>
+          <DefinedSize>30</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -1012,7 +988,7 @@ Version:4.1.0.1596-->
           <SqlType>Varchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>9</DefinedSize>
+          <DefinedSize>10</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -1065,7 +1041,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">([1-9][0-9][0-9]?) (North |East |West |South |||||||||||)(Green |White |Rocky ||||)(Nobel|Fabien|Hague|Oak|Second|First|Cowley|Clarendon|New|Old|Milton) (Way|Street|St.|Avenue|Road|Parkway|Freeway|Drive|Boulevard|Blvd.)</value>
+                <value type="string">([1-9][0-9]?[0-9]?) ($"diaChi.txt")</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1188,7 +1164,7 @@ Version:4.1.0.1596-->
           <SqlType>Varchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>20</DefinedSize>
+          <DefinedSize>50</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -1308,7 +1284,7 @@ Version:4.1.0.1596-->
           <SqlType>NVarchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>30</DefinedSize>
+          <DefinedSize>50</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -1317,7 +1293,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">($"KhachSan.txt")</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1325,7 +1301,7 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">NullsAllowed</key>
-                <value type="string">True</value>
+                <value type="string">False</value>
               </element>
               <element>
                 <key type="string">NullProportion</key>
@@ -1408,7 +1384,7 @@ Version:4.1.0.1596-->
           <SqlType>Varchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>10</DefinedSize>
+          <DefinedSize>12</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -1417,7 +1393,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[0-9]{3}[/][0-9]{2}|[0-9]{3}</value>
+                <value type="string">[0-9]{1,3}[/][0-9]{2}|[0-9]{1,3}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1452,7 +1428,7 @@ Version:4.1.0.1596-->
           <SqlType>NVarchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>30</DefinedSize>
+          <DefinedSize>50</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -1461,7 +1437,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">($"duong.txt")</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1505,7 +1481,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[1-9]|10|11|12|Bình Thạnh|Tân Bình|Tân Phú|Bình Tân|Phú Nhuận|Thủ Đức|Gò Vấp</value>
+                <value type="string">($"Quan.txt")</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1549,7 +1525,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">Tp. HCM</value>
+                <value type="string">Hồ Chí Minh|Hà Nội|Hải Phòng|Đà Nẵng|Cần Thơ|Đà Lạt|Huế</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1605,11 +1581,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">-2147483648</value>
+                <value type="string">500000</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">2147483647</value>
+                <value type="string">5000000</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -1625,7 +1601,7 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">3079</value>
+                <value type="string">100000</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -1649,7 +1625,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">($"MoTaKhachSan.txt")</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1681,7 +1657,7 @@ Version:4.1.0.1596-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>200</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -1704,7 +1680,7 @@ Version:4.1.0.1596-->
           <SqlType>Char</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>3</DefinedSize>
+          <DefinedSize>10</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -1713,7 +1689,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">STD|SUP|DLX|SUT|CNT</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1825,7 +1801,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Increment</key>
-                <value type="string">1</value>
+                <value type="string">10000</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1837,11 +1813,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">-2147483648</value>
+                <value type="string">500000</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">2147483647</value>
+                <value type="string">5000000</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -1857,7 +1833,7 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">4099</value>
+                <value type="string">500000</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -1881,7 +1857,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">\w*</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -1937,11 +1913,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">-32768</value>
+                <value type="string">0</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">32767</value>
+                <value type="string">15000</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -1968,7 +1944,7 @@ Version:4.1.0.1596-->
           <Fields type="List&lt;string&gt;" version="1">
             <value type="string">maKS</value>
           </Fields>
-          <ForeignKeyFillMethod>RepeatForever</ForeignKeyFillMethod>
+          <ForeignKeyFillMethod>RepeatBetweenMinandMax</ForeignKeyFillMethod>
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
@@ -2014,7 +1990,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">NV[A-Z0-9]*</value>
+                <value type="string">NV[0-9]{8}</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -2049,7 +2025,7 @@ Version:4.1.0.1596-->
           <SqlType>NVarchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>30</DefinedSize>
+          <DefinedSize>50</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -2058,7 +2034,7 @@ Version:4.1.0.1596-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">[A-Z0-9]*</value>
+                <value type="string">($"HoTen.txt")</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
@@ -2093,7 +2069,7 @@ Version:4.1.0.1596-->
           <SqlType>Varchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>20</DefinedSize>
+          <DefinedSize>30</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -2137,7 +2113,7 @@ Version:4.1.0.1596-->
           <SqlType>Varchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>20</DefinedSize>
+          <DefinedSize>30</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -2201,7 +2177,7 @@ Version:4.1.0.1596-->
           <Fields type="List&lt;string&gt;" version="1">
             <value type="string">maKS</value>
           </Fields>
-          <ForeignKeyFillMethod>RepeatForever</ForeignKeyFillMethod>
+          <ForeignKeyFillMethod>RepeatBetweenMinandMax</ForeignKeyFillMethod>
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
@@ -2215,7 +2191,7 @@ Version:4.1.0.1596-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>30000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -2282,7 +2258,7 @@ Version:4.1.0.1596-->
           <SqlType>Char</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>3</DefinedSize>
+          <DefinedSize>10</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>
@@ -2303,38 +2279,22 @@ Version:4.1.0.1596-->
           <ForeignKey>False</ForeignKey>
           <Unique>False</Unique>
           <AllowsNulls>True</AllowsNulls>
-          <SqlType>Integer16</SqlType>
-          <Precision>5</Precision>
+          <SqlType>Char</SqlType>
+          <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>2</DefinedSize>
+          <DefinedSize>5</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int16Generator</GeneratorTypeName>
-            <DisplayName>smallint</DisplayName>
-            <Description>Generates smallint (16-bit) values</Description>
-            <CategoryName>SQL Type</CategoryName>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
+            <DisplayName>Regex Generator</DisplayName>
+            <Description>Generates data from a Regular Expression</Description>
+            <CategoryName>Generic</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Increment</key>
-                <value type="string">1</value>
+                <key type="string">Expression</key>
+                <value type="string">[A-Z0-9]*</value>
               </element>
               <element>
                 <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">-32768</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">32767</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
                 <value type="string">False</value>
               </element>
               <element>
@@ -2347,7 +2307,11 @@ Version:4.1.0.1596-->
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">6146</value>
+                <value type="string">6147</value>
+              </element>
+              <element>
+                <key type="string">Unique</key>
+                <value type="string">False</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -2372,7 +2336,7 @@ Version:4.1.0.1596-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>1000000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -2502,7 +2466,7 @@ Version:4.1.0.1596-->
           <SqlType>NVarchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>20</DefinedSize>
+          <DefinedSize>15</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
