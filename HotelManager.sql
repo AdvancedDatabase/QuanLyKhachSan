@@ -1,21 +1,18 @@
-﻿
-
-CREATE DATABASE QUANLYKHACHSAN
+﻿CREATE DATABASE QUANLYKHACHSAN
 GO
 
 USE QUANLYKHACHSAN
 GO
 
-
 -------------------------------------------------
 --CREATE TABLE
 
 CREATE TABLE KhachHang (
-	maKH char(10),
+	maKH char(10) NOT NULL,
 	hoTen nvarchar(50),
-	tenDangNhap varchar(30),
+	tenDangNhap varchar(30) NOT NULL UNIQUE,
 	matKhau varchar(30),
-	soCMND varchar(10),
+	soCMND varchar(10) NOT NULL,
 	diaChi nvarchar(100),
 	soDienThoai varchar(10),
 	moTa nvarchar(255),
@@ -25,18 +22,18 @@ CREATE TABLE KhachHang (
 GO
 
 CREATE TABLE NhanVien(
-	maNV char(10),
+	maNV char(10) NOT NULL,
 	hoTen nvarchar(50),
-	tenDangNhap varchar(30),
+	tenDangNhap varchar(30) NOT NULL UNIQUE,
 	matKhau varchar(30),
-	maKS tinyint,
+	maKS tinyint NOT NULL,
 	CONSTRAINT PK_nhanvien PRIMARY KEY (maNV)
 )
 GO
 
 CREATE TABLE KhachSan(
-	maKS tinyint,
-	tenKS nvarchar(50),
+	maKS tinyint NOT NULL,
+	tenKS nvarchar(50) NOT NULL,
 	soSao tinyint,
 	soNha varchar(12),
 	duong nvarchar(50),
@@ -49,51 +46,51 @@ CREATE TABLE KhachSan(
 GO
 
 CREATE TABLE LoaiPhong(
-	maLoaiPhong char(10),--
+	maLoaiPhong char(10) NOT NULL,
 	tenLoaiPhong varchar(20),
-	maKS tinyint,
-	donGia int,
+	maKS tinyint NOT NULL,
+	donGia int NOT NULL,
 	moTa nvarchar(255),
-	slTrong smallint,
+	slTrong smallint NOT NULL,
 	CONSTRAINT PK_loaiphong PRIMARY KEY (maLoaiPhong)
 )
 GO
 
 CREATE TABLE Phong(
-	maPhong char(5),
-	loaiPhong char(10),
-	soPhong char(5),
+	maPhong char(5) NOT NULL,
+	loaiPhong char(10) NOT NULL,
+	soPhong char(5) NOT NULL,
 	CONSTRAINT PK_phong PRIMARY KEY (maPhong)
 )
 GO
 
 CREATE TABLE TrangThaiPhong(
-	maPhong char(5),
-	ngay datetime,
-	tinhTrang nvarchar(15),
+	maPhong char(5) NOT NULL,
+	ngay datetime NOT NULL,
+	tinhTrang nvarchar(15) NOT NULL,
 	CONSTRAINT PK_trangthaiphong PRIMARY KEY (maPhong, ngay)
 )
 GO
 
 CREATE TABLE DatPhong(
-	maDP char(10),
-	maLoaiPhong char(10),
-	maKH char(10),
+	maDP char(10) NOT NULL,
+	maLoaiPhong char(10) NOT NULL,
+	maKH char(10) NOT NULL,
 	ngayBatDau datetime,
 	ngayTraPhong datetime,
 	ngayDat datetime,
 	donGia int,
 	moTa nvarchar(255),
-	tinhTrang nvarchar(13),
+	tinhTrang nvarchar(13) NOT NULL,
 	CONSTRAINT PK_datphong PRIMARY KEY (maDP)
 )
 GO
 
 CREATE TABLE HoaDon(
-	maHD char(10),
-	ngayThanhToan datetime,
-	tongTien int,
-	maDP char(10),
+	maHD char(10) NOT NULL,
+	ngayThanhToan datetime NOT NULL,
+	tongTien int NOT NULL,
+	maDP char(10) NOT NULL,
 	CONSTRAINT PK_hoadon PRIMARY KEY (maHD)
 )
 GO
@@ -159,12 +156,12 @@ GO
 --CREATE TABLE
 
 ALTER TABLE TrangThaiPhong
-ADD CONSTRAINT CHK_tinhtrang
+ADD CONSTRAINT CHK_tinhtrangTTP
 CHECK (tinhtrang in (N'đang sử dụng', N'đang bảo trì', N'còn trống'))
 GO
 
 ALTER TABLE DatPhong
-ADD CONSTRAINT CHK_tinhtrang
+ADD CONSTRAINT CHK_tinhtrangDatPhong
 CHECK (tinhtrang in (N'đã xác nhận', N'chưa xác nhận'))
 GO
 
