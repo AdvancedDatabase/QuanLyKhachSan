@@ -168,6 +168,17 @@ ADD CONSTRAINT CHK_tinhtrang
 CHECK (tinhtrang in (N'đã xác nhận', N'chưa xác nhận'))
 GO
 
+ALTER TABLE DatPhong
+ADD CONSTRAINT CHK_ngaytraphong
+CHECK (ngayTraPhong > ngayBatDau)
+GO
+
+ALTER TABLE DatPhong
+ADD CONSTRAINT CHK_ngaydat
+CHECK (ngayDat <= ngayBatDau)
+GO
+
+
 ------------------------------------------
 -- PROCEDURE
 /*
