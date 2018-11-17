@@ -9,7 +9,7 @@ III - Store procedure
 	6. Kiểm tra tình trạng phòng (1 point)(Nga)
 	7. Tìm kiếm hóa đơn (1 point)(Nga)
 	8. Thống kê, báo cáo (5 point)(DTuan)
-IV - Trigger
+IV - Trigger ()
 	1. Giá khách sạn theo chất lượng khách sạn (số sao)
 	2. Tính lại giá trung bình của từng khách sạn
 	3. Số sao khách sạn thuộc [1;5]
