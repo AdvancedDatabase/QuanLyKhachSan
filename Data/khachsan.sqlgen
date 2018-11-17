@@ -1804,34 +1804,60 @@ Version:4.1.0.1596-->
           <Scale>0</Scale>
           <DefinedSize>255</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
-            <DisplayName>Regex Generator</DisplayName>
-            <Description>Generates data from a Regular Expression</Description>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Python.PythonScriptGenerator</GeneratorTypeName>
+            <DisplayName>Python script</DisplayName>
+            <Description>Generates data using an IronPython script</Description>
             <CategoryName>Generic</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Expression</key>
-                <value type="string">$[tenLoaiPhong]. ($"MoTaLoaiPhong.txt")</value>
-              </element>
-              <element>
-                <key type="string">UseSequence</key>
+                <key type="string">NullsAllowed</key>
                 <value type="string">False</value>
               </element>
               <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">True</value>
-              </element>
-              <element>
                 <key type="string">NullProportion</key>
-                <value type="string">0.01</value>
+                <value type="string">0</value>
               </element>
               <element>
-                <key type="string">Seed</key>
-                <value type="string">4100</value>
+                <key type="string">Randomize</key>
+                <value type="string">False</value>
+              </element>
+              <element>
+                <key type="string">Code</key>
+                <value type="string"># Basic generator template
+
+def main(config):
+    # config["column_name"] is the column name
+    # config["column_type"] is the column datatype
+    # config["column_size"] is the column size
+    # config["n_rows"] is the number of rows
+    # config["seed"] is the current random seed
+    if maLoaiPhong == '6964':
+        return "Hello"
+    else:
+        return "Word"</value>
               </element>
               <element>
                 <key type="string">Unique</key>
                 <value type="string">False</value>
+              </element>
+              <element>
+                <key type="string">ScriptPath</key>
+              </element>
+              <element>
+                <key type="string">ColumnSize</key>
+                <value type="string">255</value>
+              </element>
+              <element>
+                <key type="string">ColumnName</key>
+                <value type="string">moTa</value>
+              </element>
+              <element>
+                <key type="string">ColumnType</key>
+                <value type="string">nvarchar</value>
+              </element>
+              <element>
+                <key type="string">Seed</key>
+                <value type="string">4100</value>
               </element>
             </GeneratorProperties>
           </Generator>
