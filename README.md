@@ -6,6 +6,8 @@
 * Tìm kiếm thông tin khách sạn
 * Đăng nhập / đăng xuất
 * Đặt phòng
+* Hủy phòng
+* Trả phòng
 * Lập hóa đơn
 * Kiểm tra tình trạng phòng
 * Tìm kiếm thông tin hóa đơn:

@@ -153,7 +153,7 @@ REFERENCES DatPhong(maDP)
 GO
 
 -------------------------------------------------
---CREATE TABLE
+--CREATE CHECK
 
 ALTER TABLE TrangThaiPhong
 ADD CONSTRAINT CHK_tinhtrangTTP
@@ -174,7 +174,6 @@ ALTER TABLE DatPhong
 ADD CONSTRAINT CHK_ngaydat
 CHECK (ngayDat <= ngayBatDau)
 GO
-
 
 ------------------------------------------
 -- PROCEDURE
