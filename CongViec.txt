@@ -1,0 +1,17 @@
+﻿I - Add index (Lần 1 như vại được rồi)
+II - Share database (Mọi người tìm hiểu giúp)
+III - Store procedure
+	1. Đăng ký tài khoản (2 point)(MVTuan)
+	2. Đăng nhập/Đăng xuất (1 point)(MVTuan)
+	3. Tìm kiếm khách sạn (2 point)(Nhu)
+	4. Đặt phòng/Trả phòng (2 point)(Nhu)
+	5. Lập hóa đơn (2 point)(Nga)
+	6. Kiểm tra tình trạng phòng (1 point)(Nga)
+	7. Tìm kiếm hóa đơn (1 point)(Nga)
+	8. Thống kê, báo cáo (5 point)(DTuan)
+IV - Trigger ()
+	1. Giá khách sạn theo chất lượng khách sạn (số sao)
+	2. Tính lại giá trung bình của từng khách sạn
+	3. Số sao khách sạn thuộc [1;5]
+	4. Mật khẩu >= 8 ký tự
+	5. ngayThanhToan>=ngayDat, ngayThanhToan<=ngaytraPhong
