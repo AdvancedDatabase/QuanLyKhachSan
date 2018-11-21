@@ -197,3 +197,37 @@ AS
 	INSERT INTO DatPhong(maDP, maLoaiPhong, maKH, ngayBatDau, ngayTraPhong, ngayDat, donGia, moTa, tinhTrang) VALUES (@maDP , @maLoaiPhong, @maKH, @ngayBatDau, @ngayTraPhong, @ngayDat, @donGia, @moTa, N'chưa xác nhận')
 	RETURN @maDP
 */
+
+CREATE PROCEDURE SP_DangKy
+	@maKH char(10),
+	@hoTen nvarchar(50),
+	@tenDangNhap varchar(30) ,
+	@matKhau varchar(30),
+	@soCMND varchar(10) NOT NULL,
+	@diaChi nvarchar(100),
+	@soDienThoai varchar(10),
+	@moTa nvarchar(255),
+	@email varchar(50)
+AS
+BEGIN
+	DECLARE @res tinyint
+	SET @res = 0
+	IF (NOT EXISTS(SELECT * FROM KhachHang WHERE tenDangNhap = @tenDangNhap))
+	BEGIN
+		INSERT INTO KhachHang(maKH, hoTen, tenDangNhap, matKhau, soCMND, diaChi, soDienThoai, moTa, email)
+		VALUES(@maKH, @hoTen, @tenDangNhap, @matKhau, @soCMND, @diaChi, @soDienThoai, @moTa, @email)
+		SET @res = 1
+	END
+	SELECT @res
+END
+GO
+
+CREATE PROCEDURE SP_DangNhap @tenDangNhap varchar(30) ,@matKhau varchar(30)
+AS
+BEGIN
+	DECLARE @res tinyint
+	SET @res = 0
+	IF(NOT EXISTS(SELECT * FROM KhachHang WHERE tenDangNhap = @tenDangNhap AND matKhau = @matKhau))
+		SET @res = 1
+	SELECT @res
+END
