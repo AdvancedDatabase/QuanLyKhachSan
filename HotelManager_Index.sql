@@ -1,7 +1,7 @@
-﻿CREATE DATABASE QUANLYKHACHSAN
+﻿CREATE DATABASE QUANLYKHACHSAN2
 GO
 
-USE QUANLYKHACHSAN
+USE QUANLYKHACHSAN2
 GO
 
 -------------------------------------------------
@@ -175,3 +175,21 @@ ALTER TABLE KhachSan
 ADD CONSTRAINT CHK_sosao
 CHECK (soSao>=1 AND soSao<=5)
 GO
+
+
+---------------------------------------------
+-- INDEX
+CREATE INDEX idx_maks
+ON LoaiPhong(maKS)
+
+CREATE INDEX idx_maks_dongia
+ON LoaiPhong(maKS, donGia)
+
+CREATE INDEX idx_loaiphong
+ON Phong(loaiPhong)
+
+select count(*) from KhachHang
+select count(*) from NhanVien
+select count(*) from HoaDon
+select count(*) from DatPhong
+select count(*) from TrangThaiPhong

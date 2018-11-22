@@ -17,11 +17,14 @@
 * Báo cáo tổng kết
 
 ## Giai đoạn: 
-### Tạo CSDL, phát sinh dữ liệu (here): 
-* Thống nhất kiểu dữ liệu
-* ? Khóa chính b.LoaiPhong (maLoaiPhong,maKS?) có cần thêm không?
-* tinhTrang (đang sử dụng, đang bảo trì, còn trống)
-* Chia bảng phát sinh dữ liệu: MV Tuấn (KH, KS), Như (Đặt Phòng, Hóa đơn), Nga (Phòng, Trạng thái phòng), Đ.Tuấn (Loại Phòng, Nhân viên)
+### Tạo CSDL, phát sinh dữ liệu: 
 ### Viết procedure, function, ràng buộc toàn vẹn,...
 ### Tạo web và đưa dữ liệu lên web
 ### Tạo giao diện, hoàn thành các yêu cầu còn lại.
+
+## File/folder:
+### Data (folder): chứa các file để sinh dữ liệu
+### generate_database.txt: cách phát sinh dữ liệu
+### HMDatabase.sqlgen: file phát sinh dữ liệu
+### HotelManager.sql: tạo bảng và các ràng buộc của database QuanLyKhachSan
+### HotelManager_Index.sql: tạo bảng và các ràng buộc của database QuanLyKhachSan có index
