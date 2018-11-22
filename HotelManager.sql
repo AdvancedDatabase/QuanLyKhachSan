@@ -197,7 +197,6 @@ AS
 	INSERT INTO DatPhong(maDP, maLoaiPhong, maKH, ngayBatDau, ngayTraPhong, ngayDat, donGia, moTa, tinhTrang) VALUES (@maDP , @maLoaiPhong, @maKH, @ngayBatDau, @ngayTraPhong, @ngayDat, @donGia, @moTa, N'chưa xác nhận')
 	RETURN @maDP
 */
-
 CREATE PROCEDURE SP_DangKy
 	@maKH char(10),
 	@hoTen nvarchar(50),
@@ -218,16 +217,15 @@ BEGIN
 		VALUES(@maKH, @hoTen, @tenDangNhap, @matKhau, @soCMND, @diaChi, @soDienThoai, @moTa, @email)
 		SET @res = 1
 	END
-	SELECT @res
+	RETURN @res
 END
 GO
-
-CREATE PROCEDURE SP_DangNhap @tenDangNhap varchar(30) ,@matKhau varchar(30)
+ CREATE PROCEDURE SP_DangNhap @tenDangNhap varchar(30) ,@matKhau varchar(30)
 AS
 BEGIN
 	DECLARE @res tinyint
 	SET @res = 0
 	IF(NOT EXISTS(SELECT * FROM KhachHang WHERE tenDangNhap = @tenDangNhap AND matKhau = @matKhau))
 		SET @res = 1
-	SELECT @res
-END
+	RETURN @res
+END 
