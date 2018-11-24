@@ -19,7 +19,7 @@ Version:3.2.4.1284-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>600000</RowCount>
+        <RowCount>6000000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -34,47 +34,15 @@ Version:3.2.4.1284-->
       <Fields type="List&lt;SDGField&gt;" version="1">
         <value version="1" type="SDGField">
           <Name>maDP</Name>
-          <FieldType>Generated</FieldType>
+          <FieldType>Default</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer32</SqlType>
+          <Precision>10</Precision>
           <Scale>0</Scale>
-          <DefinedSize>10</DefinedSize>
-          <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
-            <DisplayName>Regex Generator</DisplayName>
-            <Description>Generates data from a Regular Expression</Description>
-            <CategoryName>Generic</CategoryName>
-            <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
-              <element>
-                <key type="string">Expression</key>
-                <value type="string">DP[0-9]{8}</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">Seed</key>
-                <value type="string">0</value>
-              </element>
-              <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullProportion</key>
-                <value type="string">0.01</value>
-              </element>
-              <element>
-                <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-            </GeneratorProperties>
-          </Generator>
+          <DefinedSize>4</DefinedSize>
         </value>
         <value version="1" type="SDGField">
           <Name>maLoaiPhong</Name>
@@ -83,10 +51,10 @@ Version:3.2.4.1284-->
           <ForeignKey>True</ForeignKey>
           <Unique>False</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer16</SqlType>
+          <Precision>5</Precision>
           <Scale>0</Scale>
-          <DefinedSize>7</DefinedSize>
+          <DefinedSize>2</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>
@@ -107,10 +75,10 @@ Version:3.2.4.1284-->
           <ForeignKey>True</ForeignKey>
           <Unique>False</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer16</SqlType>
+          <Precision>5</Precision>
           <Scale>0</Scale>
-          <DefinedSize>5</DefinedSize>
+          <DefinedSize>2</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>
@@ -131,10 +99,10 @@ Version:3.2.4.1284-->
           <ForeignKey>True</ForeignKey>
           <Unique>False</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer32</SqlType>
+          <Precision>10</Precision>
           <Scale>0</Scale>
-          <DefinedSize>10</DefinedSize>
+          <DefinedSize>4</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>
@@ -350,7 +318,7 @@ Version:3.2.4.1284-->
               </element>
               <element>
                 <key type="string">MinOffset</key>
-                <value type="string">-363.23:59:59</value>
+                <value type="string">-29.23:59:59</value>
               </element>
               <element>
                 <key type="string">MaxOffset</key>
@@ -575,7 +543,7 @@ Version:3.2.4.1284-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>500000</RowCount>
+        <RowCount>5000000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -590,47 +558,15 @@ Version:3.2.4.1284-->
       <Fields type="List&lt;SDGField&gt;" version="1">
         <value version="1" type="SDGField">
           <Name>maHD</Name>
-          <FieldType>Generated</FieldType>
+          <FieldType>Default</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer32</SqlType>
+          <Precision>10</Precision>
           <Scale>0</Scale>
-          <DefinedSize>10</DefinedSize>
-          <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
-            <DisplayName>Regex Generator</DisplayName>
-            <Description>Generates data from a Regular Expression</Description>
-            <CategoryName>Generic</CategoryName>
-            <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
-              <element>
-                <key type="string">Expression</key>
-                <value type="string">HD[0-9]{8}</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">Seed</key>
-                <value type="string">1024</value>
-              </element>
-              <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullProportion</key>
-                <value type="string">0.01</value>
-              </element>
-              <element>
-                <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-            </GeneratorProperties>
-          </Generator>
+          <DefinedSize>4</DefinedSize>
         </value>
         <value version="1" type="SDGField">
           <Name>ngayThanhToan</Name>
@@ -766,10 +702,10 @@ Version:3.2.4.1284-->
           <ForeignKey>True</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer32</SqlType>
+          <Precision>10</Precision>
           <Scale>0</Scale>
-          <DefinedSize>10</DefinedSize>
+          <DefinedSize>4</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>
@@ -803,7 +739,7 @@ Version:3.2.4.1284-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>500000</RowCount>
+        <RowCount>5000000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -818,47 +754,15 @@ Version:3.2.4.1284-->
       <Fields type="List&lt;SDGField&gt;" version="1">
         <value version="1" type="SDGField">
           <Name>maKH</Name>
-          <FieldType>Generated</FieldType>
+          <FieldType>Default</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer32</SqlType>
+          <Precision>10</Precision>
           <Scale>0</Scale>
-          <DefinedSize>10</DefinedSize>
-          <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
-            <DisplayName>Regex Generator</DisplayName>
-            <Description>Generates data from a Regular Expression</Description>
-            <CategoryName>Generic</CategoryName>
-            <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
-              <element>
-                <key type="string">Expression</key>
-                <value type="string">KH[0-9]{8}</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">Seed</key>
-                <value type="string">2048</value>
-              </element>
-              <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullProportion</key>
-                <value type="string">0.01</value>
-              </element>
-              <element>
-                <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-            </GeneratorProperties>
-          </Generator>
+          <DefinedSize>4</DefinedSize>
         </value>
         <value version="1" type="SDGField">
           <Name>hoTen</Name>
@@ -923,7 +827,7 @@ Version:3.2.4.1284-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">($"NamesFirst.txt")($"NamesFirst.txt")($"NamesLast.txt")</value>
+                <value type="string">($"NamesFirst.txt")($"NamesFirst.txt")($"NamesLast.txt")[a-z]</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -1187,7 +1091,7 @@ Version:3.2.4.1284-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">($"NamesFirst.txt")($"NamesLast.txt")[0-9]{3}@gmail.com</value>
+                <value type="string">($"NamesFirst.txt")($"NamesLast.txt")[0-9]{4}@gmail.com</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -1219,7 +1123,7 @@ Version:3.2.4.1284-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>10</RowCount>
+        <RowCount>100</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -1234,7 +1138,7 @@ Version:3.2.4.1284-->
       <Fields type="List&lt;SDGField&gt;" version="1">
         <value version="1" type="SDGField">
           <Name>maKS</Name>
-          <FieldType>Generated</FieldType>
+          <FieldType>Default</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
@@ -1243,50 +1147,6 @@ Version:3.2.4.1284-->
           <Precision>3</Precision>
           <Scale>0</Scale>
           <DefinedSize>1</DefinedSize>
-          <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.ByteGenerator</GeneratorTypeName>
-            <DisplayName>tinyint</DisplayName>
-            <Description>Generates tinyint values (8-bit)</Description>
-            <CategoryName>SQL Type</CategoryName>
-            <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
-              <element>
-                <key type="string">Increment</key>
-                <value type="string">1</value>
-              </element>
-              <element>
-                <key type="string">UseSequence</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">1</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">255</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullProportion</key>
-                <value type="string">0.01</value>
-              </element>
-              <element>
-                <key type="string">Seed</key>
-                <value type="string">3072</value>
-              </element>
-            </GeneratorProperties>
-          </Generator>
         </value>
         <value version="1" type="SDGField">
           <Name>tenKS</Name>
@@ -1659,7 +1519,7 @@ Version:3.2.4.1284-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>200</RowCount>
+        <RowCount>2000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -1674,15 +1534,27 @@ Version:3.2.4.1284-->
       <Fields type="List&lt;SDGField&gt;" version="1">
         <value version="1" type="SDGField">
           <Name>maLoaiPhong</Name>
-          <FieldType>Generated</FieldType>
+          <FieldType>Default</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
+          <SqlType>Integer16</SqlType>
+          <Precision>5</Precision>
+          <Scale>0</Scale>
+          <DefinedSize>2</DefinedSize>
+        </value>
+        <value version="1" type="SDGField">
+          <Name>tenLoaiPhong</Name>
+          <FieldType>Generated</FieldType>
+          <PrimaryKey>False</PrimaryKey>
+          <ForeignKey>False</ForeignKey>
+          <Unique>False</Unique>
+          <AllowsNulls>False</AllowsNulls>
+          <SqlType>NVarchar</SqlType>
           <Precision>0</Precision>
           <Scale>0</Scale>
-          <DefinedSize>7</DefinedSize>
+          <DefinedSize>30</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
             <DisplayName>Regex Generator</DisplayName>
@@ -1691,15 +1563,15 @@ Version:3.2.4.1284-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">Expression</key>
-                <value type="string">($"MaLoaiPhong.txt")[0-9]{3}</value>
+                <value type="string">($"LoaiPhong.txt")</value>
               </element>
               <element>
                 <key type="string">Unique</key>
-                <value type="string">True</value>
+                <value type="string">False</value>
               </element>
               <element>
                 <key type="string">Seed</key>
-                <value type="string">4096</value>
+                <value type="string">4097</value>
               </element>
               <element>
                 <key type="string">NullsAllowed</key>
@@ -1712,99 +1584,6 @@ Version:3.2.4.1284-->
               <element>
                 <key type="string">UseSequence</key>
                 <value type="string">False</value>
-              </element>
-            </GeneratorProperties>
-          </Generator>
-        </value>
-        <value version="1" type="SDGField">
-          <Name>tenLoaiPhong</Name>
-          <FieldType>Generated</FieldType>
-          <PrimaryKey>False</PrimaryKey>
-          <ForeignKey>False</ForeignKey>
-          <Unique>False</Unique>
-          <AllowsNulls>False</AllowsNulls>
-          <SqlType>NVarchar</SqlType>
-          <Precision>0</Precision>
-          <Scale>0</Scale>
-          <DefinedSize>20</DefinedSize>
-          <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Python.PythonScriptGenerator</GeneratorTypeName>
-            <DisplayName>Python script</DisplayName>
-            <Description>Generates data using an IronPython script</Description>
-            <CategoryName>Generic</CategoryName>
-            <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
-              <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullProportion</key>
-                <value type="string">0</value>
-              </element>
-              <element>
-                <key type="string">Seed</key>
-                <value type="string">4097</value>
-              </element>
-              <element>
-                <key type="string">Randomize</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">Code</key>
-                <value type="string">def main(config):
-    ans = "a"
-    if maLoaiPhong.find("STD")==0:
-        ans = "Standard Double"
-    elif maLoaiPhong.find("SUPD")==0:
-    	ans = "Superior Double"
-    elif maLoaiPhong.find("DLXD")==0:
-        ans = "Deluxe Double"
-    elif maLoaiPhong.find("SUTD")==0:
-        ans = "Suite Double"
-    elif maLoaiPhong.find("STDQ")==0:
-        ans = "Standard Quadruple"
-    elif maLoaiPhong.find("SUPQ")==0:
-    	ans = "Superior Quadruple"
-    elif maLoaiPhong.find("DLXQ")==0:
-        ans = "Deluxe Quadruple"
-    elif maLoaiPhong.find("SUTQ")==0:
-        ans = "Suite Quadruple"
-    elif maLoaiPhong.find("STDF")==0:
-        ans = "Standard Family"
-    elif maLoaiPhong.find("SUPF")==0:
-    	ans = "Superior Family"
-    elif maLoaiPhong.find("DLXF")==0:
-        ans = "Deluxe Family"
-    elif maLoaiPhong.find("SUTF")==0:
-        ans = "Suite Family"
-    elif maLoaiPhong.find("CTND")==0:
-        ans = "Container Double"
-    elif maLoaiPhong.find("CTNF")==0:
-        ans = "Container Family"
-    return ans</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">ScriptPath</key>
-              </element>
-              <element>
-                <key type="string">RowCount</key>
-                <value type="string">200</value>
-              </element>
-              <element>
-                <key type="string">ColumnSize</key>
-                <value type="string">20</value>
-              </element>
-              <element>
-                <key type="string">ColumnName</key>
-                <value type="string">tenLoaiPhong</value>
-              </element>
-              <element>
-                <key type="string">ColumnType</key>
-                <value type="string">nvarchar</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -2073,7 +1852,7 @@ def main(config):
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>100</RowCount>
+        <RowCount>1000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -2088,47 +1867,15 @@ def main(config):
       <Fields type="List&lt;SDGField&gt;" version="1">
         <value version="1" type="SDGField">
           <Name>maNV</Name>
-          <FieldType>Generated</FieldType>
+          <FieldType>Default</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer32</SqlType>
+          <Precision>10</Precision>
           <Scale>0</Scale>
-          <DefinedSize>10</DefinedSize>
-          <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
-            <DisplayName>Regex Generator</DisplayName>
-            <Description>Generates data from a Regular Expression</Description>
-            <CategoryName>Generic</CategoryName>
-            <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
-              <element>
-                <key type="string">Expression</key>
-                <value type="string">NV[0-9]{8}</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">Seed</key>
-                <value type="string">5120</value>
-              </element>
-              <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullProportion</key>
-                <value type="string">0.01</value>
-              </element>
-              <element>
-                <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-            </GeneratorProperties>
-          </Generator>
+          <DefinedSize>4</DefinedSize>
         </value>
         <value version="1" type="SDGField">
           <Name>hoTen</Name>
@@ -2306,7 +2053,7 @@ def main(config):
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>3000</RowCount>
+        <RowCount>30000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -2321,47 +2068,15 @@ def main(config):
       <Fields type="List&lt;SDGField&gt;" version="1">
         <value version="1" type="SDGField">
           <Name>maPhong</Name>
-          <FieldType>Generated</FieldType>
+          <FieldType>Default</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>False</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer16</SqlType>
+          <Precision>5</Precision>
           <Scale>0</Scale>
-          <DefinedSize>5</DefinedSize>
-          <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.ExpressionGenerators.Regexp.RegexpGenerator</GeneratorTypeName>
-            <DisplayName>Regex Generator</DisplayName>
-            <Description>Generates data from a Regular Expression</Description>
-            <CategoryName>Generic</CategoryName>
-            <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
-              <element>
-                <key type="string">Expression</key>
-                <value type="string">[0-9]{5}</value>
-              </element>
-              <element>
-                <key type="string">Unique</key>
-                <value type="string">True</value>
-              </element>
-              <element>
-                <key type="string">Seed</key>
-                <value type="string">6144</value>
-              </element>
-              <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullProportion</key>
-                <value type="string">0.01</value>
-              </element>
-              <element>
-                <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-            </GeneratorProperties>
-          </Generator>
+          <DefinedSize>2</DefinedSize>
         </value>
         <value version="1" type="SDGField">
           <Name>loaiPhong</Name>
@@ -2370,10 +2085,10 @@ def main(config):
           <ForeignKey>True</ForeignKey>
           <Unique>False</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer16</SqlType>
+          <Precision>5</Precision>
           <Scale>0</Scale>
-          <DefinedSize>7</DefinedSize>
+          <DefinedSize>2</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>
@@ -2451,7 +2166,7 @@ def main(config):
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>100000</RowCount>
+        <RowCount>1000000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -2471,10 +2186,10 @@ def main(config):
           <ForeignKey>True</ForeignKey>
           <Unique>True</Unique>
           <AllowsNulls>False</AllowsNulls>
-          <SqlType>Char</SqlType>
-          <Precision>0</Precision>
+          <SqlType>Integer16</SqlType>
+          <Precision>5</Precision>
           <Scale>0</Scale>
-          <DefinedSize>5</DefinedSize>
+          <DefinedSize>2</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
             <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
             <DisplayName>Foreign Key (automatic)</DisplayName>

@@ -1,7 +1,7 @@
-﻿CREATE DATABASE QUANLYKHACHSAN2
+﻿CREATE DATABASE QUANLYKHACHSAN_INDEX
 GO
 
-USE QUANLYKHACHSAN2
+USE QUANLYKHACHSAN_INDEX
 GO
 
 -------------------------------------------------
@@ -47,7 +47,7 @@ GO
 
 CREATE TABLE LoaiPhong(
 	maLoaiPhong smallint	NOT NULL IDENTITY(1,1),
-	tenLoaiPhong nvarchar(20) NOT NULL,
+	tenLoaiPhong nvarchar(30) NOT NULL,
 	maKS tinyint			NOT NULL,
 	donGia int				NOT NULL,
 	moTa nvarchar(255),

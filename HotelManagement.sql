@@ -8,7 +8,7 @@ GO
 --CREATE TABLE
 
 CREATE TABLE KhachHang (
-	maKH char(10)			NOT NULL,
+	maKH int				NOT NULL IDENTITY(1,1),
 	hoTen nvarchar(50)		NOT NULL,
 	tenDangNhap varchar(30) NOT NULL UNIQUE,
 	matKhau varchar(30)		NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE KhachHang (
 GO
 
 CREATE TABLE NhanVien(
-	maNV char(10)			NOT NULL,
+	maNV int				NOT NULL IDENTITY(1,1),
 	hoTen nvarchar(50)		NOT NULL,
 	tenDangNhap varchar(30) NOT NULL UNIQUE,
 	matKhau varchar(30)		NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE NhanVien(
 GO
 
 CREATE TABLE KhachSan(
-	maKS tinyint			NOT NULL,
+	maKS tinyint			NOT NULL IDENTITY(1,1),
 	tenKS nvarchar(50)		NOT NULL,
 	soSao tinyint			NOT NULL,
 	soNha varchar(12)		NOT NULL,
@@ -46,8 +46,8 @@ CREATE TABLE KhachSan(
 GO
 
 CREATE TABLE LoaiPhong(
-	maLoaiPhong char(7)		NOT NULL,
-	tenLoaiPhong nvarchar(20) NOT NULL,
+	maLoaiPhong smallint	NOT NULL IDENTITY(1,1),
+	tenLoaiPhong nvarchar(30) NOT NULL,
 	maKS tinyint			NOT NULL,
 	donGia int				NOT NULL,
 	moTa nvarchar(255),
@@ -57,15 +57,15 @@ CREATE TABLE LoaiPhong(
 GO
 
 CREATE TABLE Phong(
-	maPhong char(5)			NOT NULL,
-	loaiPhong char(7)		NOT NULL,
+	maPhong smallint		NOT NULL IDENTITY(1,1),
+	loaiPhong smallint		NOT NULL,
 	soPhong char(5)			NOT NULL,
 	CONSTRAINT PK_phong PRIMARY KEY (maPhong)
 )
 GO
 
 CREATE TABLE TrangThaiPhong(
-	maPhong char(5)			NOT NULL,
+	maPhong smallint		NOT NULL,
 	ngay datetime			NOT NULL,
 	tinhTrang nvarchar(15)	NOT NULL,
 	CONSTRAINT PK_trangthaiphong PRIMARY KEY (maPhong, ngay)
@@ -73,10 +73,10 @@ CREATE TABLE TrangThaiPhong(
 GO
 
 CREATE TABLE DatPhong(
-	maDP char(10)			NOT NULL,
-	maLoaiPhong char(7)		NOT NULL,
-	maPhong char(5)			NOT NULL,
-	maKH char(10)			NOT NULL,
+	maDP int				NOT NULL IDENTITY(1,1),
+	maLoaiPhong smallint	NOT NULL,
+	maPhong smallint		NOT NULL,
+	maKH int				NOT NULL,
 	ngayBatDau datetime		NOT NULL,
 	ngayTraPhong datetime	NOT NULL,
 	ngayDat datetime		NOT NULL,
@@ -88,10 +88,10 @@ CREATE TABLE DatPhong(
 GO
 
 CREATE TABLE HoaDon(
-	maHD char(10)			NOT NULL,
+	maHD int				NOT NULL IDENTITY(1,1),
 	ngayThanhToan datetime	NOT NULL,
 	tongTien int			NOT NULL,
-	maDP char(10)			NOT NULL UNIQUE,
+	maDP int				NOT NULL UNIQUE,
 	CONSTRAINT PK_hoadon PRIMARY KEY (maHD)
 )
 GO
