@@ -1,0 +1,14 @@
+Standard Double
+Superior Double
+Deluxe Double
+Suite Double
+Standard Quadruple
+Superior Quadruple
+Deluxe Quadruple
+Suite Quadruple
+Standard Family
+Superior Family
+Deluxe Family
+Suite Family
+Container Double
+Container Family
