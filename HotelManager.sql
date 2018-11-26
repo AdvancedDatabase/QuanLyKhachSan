@@ -229,3 +229,14 @@ BEGIN
 		SET @res = 1
 	RETURN @res
 END 
+--declare @extractingstring char(8)
+--declare @maKH char(10), @maAd char(10)
+--SELECT @maKH =  max(maKH) from dbo.KhachHang
+--select @maKH = MIN(maKH) FROM dbo.KhachHang
+--select @maKH
+--select @extractingstring =  RIGHT(@maKH, 8)
+--select cast(@extractingstring as int)
+--set @extractingstring = @extractingstring + 1
+--set @maAd = 'AD' + REPLICATE('0', 8 - len(cast(@extractingstring as char))) + CAST(@extractingstring as char)
+--select @maAd
+
