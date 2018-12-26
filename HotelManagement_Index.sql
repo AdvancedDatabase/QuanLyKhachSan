@@ -179,14 +179,35 @@ GO
 
 ---------------------------------------------
 -- INDEX
-CREATE INDEX idx_maks
-ON LoaiPhong(maKS)
+CREATE INDEX idx_loaiphong_maks
+ON LoaiPhong(maKS);
 
-CREATE INDEX idx_maks_dongia
-ON LoaiPhong(maKS, donGia)
+CREATE INDEX idx_loaiphong_maks_dongia
+ON LoaiPhong(maKS, donGia);
 
-CREATE INDEX idx_loaiphong
-ON Phong(loaiPhong)
+CREATE INDEX idx_phong_loaiphong
+ON Phong(loaiPhong);
+
+CREATE INDEX idx_khachhang_tendangnhap_matkhau
+ON KhachHang(tenDangNhap, matKhau);
+
+CREATE INDEX idx_nhanvien_tendangnhap_matkhau
+ON NhanVien(tenDangNhap, matKhau);
+
+CREATE INDEX idx_khachsan_thanhpho
+ON KhachSan(thanhPho);
+
+CREATE INDEX idx_trangthaiphong_maphong
+ON TrangThaiPhong(maPhong);
+
+CREATE INDEX idx_datphong_maphong
+ON DatPhong(maPhong);
+
+CREATE INDEX idx_datphong_maKH
+ON DatPhong(maKH);
+
+CREATE INDEX idx_hoadon_maDP_tongtien
+ON HoaDon(maDP, tongTien);
 
 select count(*) from KhachHang
 select count(*) from NhanVien

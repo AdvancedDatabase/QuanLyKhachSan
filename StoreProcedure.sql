@@ -140,3 +140,34 @@ END
 
 GO
 
+create procedure sp_LogIn_Admin(
+	@tenDangNhap nvarchar(30),
+	@matKhau nvarchar(30),
+	@maKS int=0 output)
+as
+begin
+	--Kiểm tra tên đăng nhập không được null?
+	if(len(@tenDangNhap)=0)
+	begin
+		raiserror(N'Tên đăng nhập không được phép rỗng',16,1)
+		return 0;
+	end	
+	--Kiểm tra mật khẩu không được null
+	if( len(@matKhau)=0)
+	begin 
+		raiserror(N'Mật khẩu không được phép rỗng',16,1)
+		return 0;
+	end
+	--Kiểm tra tính hợp lệ của tên đăng nhập và mật khẩu
+	select @maKS=maKS from NhanVien where @tenDangNhap=tenDangNhap and @matKhau=matKhau
+	if(@maKS > 0)
+	begin
+		return @maKS;
+	end
+	else 
+		raiserror(N'Tên đăng nhập hoặc mật khẩu không đúng',16,1)
+		return 0;
+end
+
+--drop procedure sp_LogIn_Admin
+
