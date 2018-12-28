@@ -13,10 +13,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Syncfusion.Pdf;
-using Syncfusion.Pdf.Graphics;
 using System.ComponentModel;
 using System.Drawing;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace Hotel
 {
@@ -34,122 +34,34 @@ namespace Hotel
 
         private void btn_monthlyReport_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(dp_from.Text))
-                MessageBox.Show("Hãy nhập ngày bắt đầu!");
-            else if (string.IsNullOrEmpty(dp_to.Text))
-                MessageBox.Show("Hãy nhập ngày kết thúc!");
-            else
-            {
-                using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-                using (SqlCommand cmd = new SqlCommand("SP_MonthlyRevenueReport", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@hotel", SqlDbType.TinyInt);
-                    cmd.Parameters.Add("@dateBegin", SqlDbType.Date);
-                    cmd.Parameters.Add("@dateEnd", SqlDbType.Date);
-                    cmd.Parameters["@hotel"].Value = maKS;
-                    cmd.Parameters["@dateBegin"].Value = dp_from.SelectedDate.Value.Date;
-                    cmd.Parameters["@dateEnd"].Value = dp_to.SelectedDate.Value.Date;
-                    conn.Open();
-                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    sda.Fill(ds);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        dataGrid.ItemsSource = ds.Tables[0].DefaultView;
-                    }
-                    conn.Close();
-                }
-            }
+            CallReport("MonthlyReport");
         }
 
         private void btn_yearReport_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(dp_from.Text))
-                MessageBox.Show("Hãy nhập ngày bắt đầu!");
-            else if (string.IsNullOrEmpty(dp_to.Text))
-                MessageBox.Show("Hãy nhập ngày kết thúc!");
-            else
-            {
-                using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-                using (SqlCommand cmd = new SqlCommand("SP_YearRevenueReport", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@hotel", SqlDbType.TinyInt);
-                    cmd.Parameters.Add("@dateBegin", SqlDbType.Date);
-                    cmd.Parameters.Add("@dateEnd", SqlDbType.Date);
-                    cmd.Parameters["@hotel"].Value = maKS;
-                    cmd.Parameters["@dateBegin"].Value = dp_from.SelectedDate.Value.Date;
-                    cmd.Parameters["@dateEnd"].Value = dp_to.SelectedDate.Value.Date;
-                    conn.Open();
-                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    sda.Fill(ds);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        dataGrid.ItemsSource = ds.Tables[0].DefaultView;
-                    }
-                    conn.Close();
-
-                }
-            }
+            CallReport("YearReport");
         }
 
         private void btn_roomReport_Click(object sender, RoutedEventArgs e)
         {
+            CallReport("RoomReport");
+        }
+
+        private void CallReport(string name)
+        {
             if (string.IsNullOrEmpty(dp_from.Text))
                 MessageBox.Show("Hãy nhập ngày bắt đầu!");
             else if (string.IsNullOrEmpty(dp_to.Text))
                 MessageBox.Show("Hãy nhập ngày kết thúc!");
             else
             {
-                using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-                using (SqlCommand cmd = new SqlCommand("SP_RoomRevenueReport", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@hotel", SqlDbType.TinyInt);
-                    cmd.Parameters.Add("@dateBegin", SqlDbType.Date);
-                    cmd.Parameters.Add("@dateEnd", SqlDbType.Date);
-                    cmd.Parameters["@hotel"].Value = maKS;
-                    cmd.Parameters["@dateBegin"].Value = dp_from.SelectedDate.Value.Date;
-                    cmd.Parameters["@dateEnd"].Value = dp_to.SelectedDate.Value.Date;
-                    conn.Open();
-                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    sda.Fill(ds);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        dataGrid.ItemsSource = ds.Tables[0].DefaultView;
-                    }
-                    conn.Close();
-                }
-            }
-        }
-
-        private void btn_pdf_Click(object sender, RoutedEventArgs e)
-        {
-            using (PdfDocument document = new PdfDocument())
-            {
-                document.DocumentInformation.Author = maKS.ToString();
-                //Add a page to the document
-                PdfPage page = document.Pages.Add();
-
-                //Create PDF graphics for a page
-                PdfGraphics graphics = page.Graphics;
-
-                //Set the standard
-                PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
-
-                //Draw the text
-                graphics.DrawString("Hello, World! ", font, PdfBrushes.Black, new PointF(0, 0));
-                graphics.DrawString("From date: "+ dp_from.SelectedDate.Value, font, PdfBrushes.Black, new PointF(0, 50));
-                graphics.DrawString("To date: "+ dp_to.SelectedDate.Value, font, PdfBrushes.Black, new PointF(0, 100));
-
-                //Save the document
-                if (string.IsNullOrEmpty(txb_fileName.Text))
-                    document.Save("output.pdf");
-                else
-                    document.Save(txb_fileName.Text + ".pdf");
+                ReportDocument rpt = new ReportDocument();
+                rpt.Load(@"E:\Year3\Term1\AdvancedDatabase\QuanLyKhachSan\IVIVU\Hotel\" + name + ".rpt");
+                rpt.SetParameterValue("@hotel", maKS);
+                rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
+                rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);
+                rpt.SetParameterValue("name", "TuanDoan");
+                crView_Report.ViewerCore.ReportSource = rpt;
             }
         }
     }
