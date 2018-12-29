@@ -32,7 +32,10 @@ namespace Hotel
         private void CallStatistic(string name)
         {
             if (name == "StatusRoomStatistic" && string.IsNullOrEmpty(txb_minDay.Text))
+            {
                 MessageBox.Show("Hãy nhập số ngày tối thiểu");
+                return;
+            }
             if (string.IsNullOrEmpty(dp_from.Text))
                 MessageBox.Show("Hãy nhập ngày bắt đầu!");
             else if (string.IsNullOrEmpty(dp_to.Text))

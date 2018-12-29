@@ -71,9 +71,9 @@ BEGIN
 		FROM ((HoaDon hd JOIN DatPhong dp ON hd.maDP=dp.maDP)
 			JOIN LoaiPhong lp ON dp.maLoaiPhong=lp.maLoaiPhong)
 			JOIN KhachSan ks ON lp.maKS=ks.maKS
-		WHERE ks.maKS = @hotel AND (hd.ngayThanhToan BETWEEN '2018-1-1' AND '2018-12-31')
+		WHERE ks.maKS = @hotel AND (hd.ngayThanhToan BETWEEN @dateBegin AND @dateEnd)
 		GROUP BY lp.maLoaiPhong, lp.tenLoaiPhong
-		ORDER BY lp.tenLoaiPhong
+		ORDER BY lp.maLoaiPhong, lp.tenLoaiPhong
 	END
 	ELSE
 	BEGIN 
@@ -82,6 +82,7 @@ BEGIN
 	END
 END
 
+--drop procedure SP_RoomRevenueReport
 --exec SP_RoomRevenueReport 84, '2017-1-1', '2018-12-31'
 
 GO
