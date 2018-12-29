@@ -114,16 +114,23 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="EmptyRoomStatistic.cs">
+      <DependentUpon>EmptyRoomStatistic.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="StatusRoomStatistic.cs">
+      <DependentUpon>StatusRoomStatistic.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="YearReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>YearReport.rpt</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="QUANLYKHACHSANDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QUANLYKHACHSANDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
@@ -187,6 +194,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RoomReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmptyRoomStatistic.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmptyRoomStatistic.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatusRoomStatistic.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StatusRoomStatistic.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="YearReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>YearReport.cs</LastGenOutput>
@@ -199,17 +214,6 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="QUANLYKHACHSANDataSet.xsc">
-      <DependentUpon>QUANLYKHACHSANDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QUANLYKHACHSANDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QUANLYKHACHSANDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QUANLYKHACHSANDataSet.xss">
-      <DependentUpon>QUANLYKHACHSANDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

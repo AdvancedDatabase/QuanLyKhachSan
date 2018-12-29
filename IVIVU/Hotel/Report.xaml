@@ -21,11 +21,28 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <DatePicker x:Name="dp_from" Width="200" HorizontalAlignment="Left" Margin="138,13,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="label" Content="Ngày bắt đầu" HorizontalAlignment="Left" Margin="40,11,0,0" VerticalAlignment="Top"/>
-                <DatePicker x:Name="dp_to" Width="200" HorizontalAlignment="Left" Margin="138,57,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="label_1" Content="Ngày kết thúc" HorizontalAlignment="Left" Margin="40,55,0,0" VerticalAlignment="Top"/>
-
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <DatePicker
+                        x:Name="dp_from"
+                        Width="300"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Ngày bắt đầu"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <DatePicker
+                        x:Name="dp_to"
+                        Width="300"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Ngày kết thúc"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                </Grid>
             </Grid>
             <Button Grid.Column="1"
                 x:Name="btn_monthlyReport"

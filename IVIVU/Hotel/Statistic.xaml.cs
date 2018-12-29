@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Drawing;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace Hotel
 {
@@ -28,41 +29,35 @@ namespace Hotel
             InitializeComponent();
         }
 
-        private void btn_SttRoom_Click(object sender, RoutedEventArgs e)
+        private void CallStatistic(string name)
         {
+            if (name == "StatusRoomStatistic" && string.IsNullOrEmpty(txb_minDay.Text))
+                MessageBox.Show("Hãy nhập số ngày tối thiểu");
             if (string.IsNullOrEmpty(dp_from.Text))
                 MessageBox.Show("Hãy nhập ngày bắt đầu!");
             else if (string.IsNullOrEmpty(dp_to.Text))
                 MessageBox.Show("Hãy nhập ngày kết thúc!");
-            else if (string.IsNullOrEmpty(txb_minDay.Text))
-                MessageBox.Show("Hãy nhập số ngày ít nhất!");
             else
             {
-                using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-                using (SqlCommand cmd = new SqlCommand("SP_StatusRoomStatistic", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@hotel", SqlDbType.TinyInt);
-                    cmd.Parameters.Add("@dateBegin", SqlDbType.Date);
-                    cmd.Parameters.Add("@dateEnd", SqlDbType.Date);
-                    cmd.Parameters.Add("@minOfDay", SqlDbType.Int);
-                    cmd.Parameters["@hotel"].Value = Login.maKS;
-                    cmd.Parameters["@dateBegin"].Value = dp_from.SelectedDate.Value.Date;
-                    cmd.Parameters["@dateEnd"].Value = dp_to.SelectedDate.Value.Date;
-                    cmd.Parameters["@minOfDay"].Value = int.Parse(txb_minDay.Text);
-                    conn.Open();
-                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    sda.Fill(ds);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        dataGrid.ItemsSource = ds.Tables[0].DefaultView;
-                    }
-                    conn.Close();
-                }
+                ReportDocument rpt = new ReportDocument();
+                rpt.Load(@"E:\Year3\Term1\AdvancedDatabase\QuanLyKhachSan\IVIVU\Hotel\" + name + ".rpt");
+                rpt.SetParameterValue("@hotel", Login.maKS);
+                rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
+                rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);
+                if (name=="StatusRoomStatistic")
+                    rpt.SetParameterValue("@minOfDay", int.Parse(txb_minDay.Text));
+                crView_Statistic.ViewerCore.ReportSource = rpt;
             }
         }
 
-        
+        private void btn_SttRoom_Click(object sender, RoutedEventArgs e)
+        {
+            CallStatistic("StatusRoomStatistic");
+        }
+
+        private void btn_emptyRoom_Click(object sender, RoutedEventArgs e)
+        {
+            CallStatistic("EmptyRoomStatistic");
+        }
     }
 }

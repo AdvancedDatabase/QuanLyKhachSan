@@ -60,7 +60,6 @@ namespace Hotel
                 rpt.SetParameterValue("@hotel", maKS);
                 rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
                 rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);
-                rpt.SetParameterValue("name", "TuanDoan");
                 crView_Report.ViewerCore.ReportSource = rpt;
             }
         }
