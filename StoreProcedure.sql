@@ -211,7 +211,7 @@ IF object_id('SP_BOOKINGLIST', 'p') IS NOT NULL
 
 GO
 
---Xem danh sách hóa đơn đang chờ xác nhận
+--Xem danh sách đặt phòng đang chờ xác nhận
 CREATE PROCEDURE SP_BOOKINGLIST
 	@MAKS INT
 AS
@@ -242,17 +242,20 @@ END
 
 GO
 
-IF object_id('SP_CancelBooking', 'p') IS NOT NULL
-	DROP PROC SP_CancelBooking
-
+IF object_id('SP_UnpaidList', 'p') IS NOT NULL
+	DROP PROC SP_UnpaidList
 GO
-
--- Xác nhận đặt phòng
-CREATE PROCEDURE SP_CancelBooking(
-	@maDP INT)
+--Xem danh sách đặt phòng chờ thanh toán
+CREATE PROCEDURE SP_UnpaidList
+	@MAKS INT
 AS
 BEGIN
-	DELETE FROM DatPhong
-	WHERE maDP=@maDP
+	SELECT DP.MADP AS N'Mã đặt phòng', KH.hoTen AS N'Người đặt', P.maPhong AS N'Mã phòng', P.soPhong AS N'Số phòng', DP.NGAYBATDAU AS N'Ngày bắt đầu', DP.NGAYTRAPHONG AS N'Ngày trả phòng', DP.NGAYDAT AS N'Ngày đặt', DP.DONGIA AS N'Đơn giá (đồng)', DP.TINHTRANG AS N'Tình trạng'
+	FROM ((DatPhong DP JOIN LoaiPhong LP ON DP.maLoaiPhong=LP.maLoaiPhong) 
+		JOIN KhachHang KH ON KH.maKH=DP.maKH)
+		JOIN Phong P ON P.maPhong = DP.maPhong
+	WHERE UPPER(DP.tinhTrang) LIKE N'ĐÃ XÁC NHẬN' AND LP.maKS=@MAKS AND DP.maDP NOT IN (
+		SELECT maDP FROM HoaDon)
 END
 
+GO	

@@ -26,7 +26,7 @@ namespace Hotel
 
         private void btn_book_Click(object sender, RoutedEventArgs e)
         {
-            BookRoom window = new BookRoom();
+            CheckIn window = new CheckIn();
             this.Hide();
             window.ShowDialog();
             this.Show();
@@ -43,6 +43,14 @@ namespace Hotel
         private void btn_Statistic_Click(object sender, RoutedEventArgs e)
         {
             Statistic window = new Statistic();
+            this.Hide();
+            window.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_CheckOut_Click(object sender, RoutedEventArgs e)
+        {
+            Pay window = new Pay();
             this.Hide();
             window.ShowDialog();
             this.Show();

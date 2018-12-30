@@ -1,7 +1,5 @@
-﻿using CrystalDecisions.CrystalReports.Engine;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -19,11 +17,11 @@ using System.Windows.Shapes;
 namespace Hotel
 {
     /// <summary>
-    /// Interaction logic for BookRoom.xaml
+    /// Interaction logic for CheckIn.xaml
     /// </summary>
-    public partial class BookRoom : Window
+    public partial class CheckIn : Window
     {
-        public BookRoom()
+        public CheckIn()
         {
             InitializeComponent();
         }
@@ -31,7 +29,6 @@ namespace Hotel
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadBookingList();
-
         }
 
         private void LoadBookingList()
@@ -73,35 +70,25 @@ namespace Hotel
 
         private void btn_accept_Click(object sender, RoutedEventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-            using (SqlCommand cmd = new SqlCommand("SP_ConfirmBooking", conn))
+            if (dg_BookingList.SelectedCells.Count > 0)
             {
-                int bookingID = int.Parse(((DataRowView)dg_BookingList.SelectedItem).Row["Mã đặt phòng"].ToString());
+                using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
+                using (SqlCommand cmd = new SqlCommand("SP_ConfirmBooking", conn))
+                {
+                    int bookingID = int.Parse(((DataRowView)dg_BookingList.SelectedItem).Row["Mã đặt phòng"].ToString());
 
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@maDP", SqlDbType.Int);
-                cmd.Parameters["@maDP"].Value = bookingID;
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                LoadBookingList();
-                conn.Close();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@maDP", SqlDbType.Int);
+                    cmd.Parameters["@maDP"].Value = bookingID;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    LoadBookingList();
+                    conn.Close();
+                }
             }
-        }
-
-        private void btn_cancel_Click(object sender, RoutedEventArgs e)
-        {
-            using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-            using (SqlCommand cmd = new SqlCommand("SP_CancelBooking", conn))
+            else
             {
-                int bookingID = int.Parse(((DataRowView)dg_BookingList.SelectedItem).Row["Mã đặt phòng"].ToString());
-
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@maDP", SqlDbType.Int);
-                cmd.Parameters["@maDP"].Value = bookingID;
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                LoadBookingList();
-                conn.Close();
+                MessageBox.Show("Hãy chọn một đơn đặt phòng!", "Thông báo");
             }
         }
     }

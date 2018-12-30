@@ -99,8 +99,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BookRoom.xaml.cs">
-      <DependentUpon>BookRoom.xaml</DependentUpon>
+    <Compile Include="CheckIn.xaml.cs">
+      <DependentUpon>CheckIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pay.xaml.cs">
+      <DependentUpon>Pay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Report_Statistic\MonthlyReport.cs">
       <DependentUpon>MonthlyReport.rpt</DependentUpon>
@@ -142,7 +145,7 @@
     <Compile Include="wMain.xaml.cs">
       <DependentUpon>wMain.xaml</DependentUpon>
     </Compile>
-    <Page Include="BookRoom.xaml">
+    <Page Include="CheckIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +162,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Report.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

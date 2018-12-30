@@ -28,13 +28,14 @@
                 Width="200"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 ToolTip="Resource name: MaterialDesignRaisedAccentButton" Click="btn_book_Click">
-                Đặt phòng
+                Nhận phòng
         </Button>
         <Button Grid.Row="2"
                 x:Name="btn_CheckOut"
                 Width="200"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                ToolTip="Resource name: MaterialDesignRaisedAccentButton">
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                Click="btn_CheckOut_Click">
                 Trả phòng
         </Button>
         <Button Grid.Row="3"
