@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hotel {
+namespace Hotel.Report_Statistic {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace Hotel {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class MonthlyReport : ReportClass {
+    public class RoomReport : ReportClass {
         
-        public MonthlyReport() {
+        public RoomReport() {
         }
         
         public override string ResourceName {
             get {
-                return "MonthlyReport.rpt";
+                return "RoomReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Hotel {
         
         public override string FullResourceName {
             get {
-                return "Hotel.MonthlyReport.rpt";
+                return "Hotel.Report_Statistic.RoomReport.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace Hotel {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace Hotel {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,25 +82,9 @@ namespace Hotel {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[6];
+                return this.ReportDefinition.Sections[4];
             }
         }
         
@@ -130,9 +114,9 @@ namespace Hotel {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedMonthlyReport : Component, ICachedReport {
+    public class CachedRoomReport : Component, ICachedReport {
         
-        public CachedMonthlyReport() {
+        public CachedRoomReport() {
         }
         
         [Browsable(false)]
@@ -169,7 +153,7 @@ namespace Hotel {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            MonthlyReport rpt = new MonthlyReport();
+            RoomReport rpt = new RoomReport();
             rpt.Site = this.Site;
             return rpt;
         }

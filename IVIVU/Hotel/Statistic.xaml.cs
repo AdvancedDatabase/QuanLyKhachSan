@@ -43,7 +43,7 @@ namespace Hotel
             else
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(@"E:\Year3\Term1\AdvancedDatabase\QuanLyKhachSan\IVIVU\Hotel\" + name + ".rpt");
+                rpt.Load(@"E:\Year3\Term1\AdvancedDatabase\QuanLyKhachSan\IVIVU\Hotel\Report_Statistic\" + name + ".rpt");
                 rpt.SetParameterValue("@hotel", Login.maKS);
                 rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
                 rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);

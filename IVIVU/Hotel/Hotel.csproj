@@ -102,31 +102,31 @@
     <Compile Include="BookRoom.xaml.cs">
       <DependentUpon>BookRoom.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MonthlyReport.cs">
+    <Compile Include="Report_Statistic\MonthlyReport.cs">
       <DependentUpon>MonthlyReport.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RoomReport.cs">
+    <Compile Include="Report_Statistic\RoomReport.cs">
       <DependentUpon>RoomReport.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="EmptyRoomStatistic.cs">
+    <Compile Include="Report_Statistic\EmptyRoomStatistic.cs">
       <DependentUpon>EmptyRoomStatistic.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="StatusRoomStatistic.cs">
+    <Compile Include="Report_Statistic\StatusRoomStatistic.cs">
       <DependentUpon>StatusRoomStatistic.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="YearReport.cs">
+    <Compile Include="Report_Statistic\YearReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>YearReport.rpt</DependentUpon>
@@ -186,23 +186,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="MonthlyReport.rpt">
+    <EmbeddedResource Include="Report_Statistic\MonthlyReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>MonthlyReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RoomReport.rpt">
+    <EmbeddedResource Include="Report_Statistic\RoomReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RoomReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmptyRoomStatistic.rpt">
+    <EmbeddedResource Include="Report_Statistic\EmptyRoomStatistic.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>EmptyRoomStatistic.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="StatusRoomStatistic.rpt">
+    <EmbeddedResource Include="Report_Statistic\StatusRoomStatistic.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>StatusRoomStatistic.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="YearReport.rpt">
+    <EmbeddedResource Include="Report_Statistic\YearReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>YearReport.cs</LastGenOutput>
     </EmbeddedResource>

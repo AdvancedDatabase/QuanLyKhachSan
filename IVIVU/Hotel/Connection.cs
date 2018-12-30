@@ -10,7 +10,7 @@ namespace Hotel
     {
         public static string connectionString()
         {
-            return "Data Source=DESKTOP-TVEI7G0;Initial Catalog=QUANLYKHACHSAN;Integrated Security=True";
+            return "Data Source=DESKTOP-TVEI7G0;Initial Catalog=QUANLYKHACHSAN_INDEX;Integrated Security=True";
         }
     }
 }

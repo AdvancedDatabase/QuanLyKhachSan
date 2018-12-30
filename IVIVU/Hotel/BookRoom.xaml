@@ -5,14 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         xmlns:local="clr-namespace:Hotel"
-        xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="Hotel.BookRoom"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Name="BookingRoom" x:Class="Hotel.BookRoom"
         mc:Ignorable="d"
-        Title="Xác nhận đặt phòng" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Xác nhận đặt phòng" Height="700" Width="1200" Loaded="Window_Loaded">
     <Grid>
-
-
-        <Viewer:CrystalReportsViewer x:Name="crView"/>
-
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBox
+                Grid.Column="0"
+                x:Name="txb_search"
+                Width="500"
+                materialDesign:HintAssist.Hint="Tìm kiếm bất kỳ gì bạn muốn =)))"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="txb_search_TextChanged"/>
+        </Grid>
+        <DataGrid
+            Grid.Row="1"
+            x:Name="dg_BookingList"
+            Margin="0 8 0 0"
+            ItemsSource="{Binding Items3}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            />
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button
+                x:Name="btn_cancel"
+                Grid.Column="0"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Width="200"
+                Height="50"
+                ToolTip="Hủy đặt phòng"
+                Click="btn_cancel_Click">
+                Hủy
+            </Button>
+            <Button
+                x:Name="btn_accept"
+                Grid.Column="1"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                Width="200"
+                Height="50"
+                ToolTip="Xác nhận đặt phòng"
+                Click="btn_accept_Click">
+                Xác nhận
+            </Button>
+        </Grid>
+        
     </Grid>
 </Window>

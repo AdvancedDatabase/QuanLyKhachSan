@@ -42,7 +42,7 @@ namespace Hotel
             else
             {
                 using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-                using (SqlCommand cmd = new SqlCommand("sp_Login_Admin", conn))
+                using (SqlCommand cmd = new SqlCommand("SP_Login_Admin", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@tenDangNhap", SqlDbType.NVarChar);

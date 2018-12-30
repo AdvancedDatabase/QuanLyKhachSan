@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hotel {
+namespace Hotel.Report_Statistic {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace Hotel {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class EmptyRoomStatistic : ReportClass {
+    public class StatusRoomStatistic : ReportClass {
         
-        public EmptyRoomStatistic() {
+        public StatusRoomStatistic() {
         }
         
         public override string ResourceName {
             get {
-                return "EmptyRoomStatistic.rpt";
+                return "StatusRoomStatistic.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Hotel {
         
         public override string FullResourceName {
             get {
-                return "Hotel.EmptyRoomStatistic.rpt";
+                return "Hotel.Report_Statistic.StatusRoomStatistic.rpt";
             }
             set {
                 // Do nothing
@@ -122,9 +122,9 @@ namespace Hotel {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedEmptyRoomStatistic : Component, ICachedReport {
+    public class CachedStatusRoomStatistic : Component, ICachedReport {
         
-        public CachedEmptyRoomStatistic() {
+        public CachedStatusRoomStatistic() {
         }
         
         [Browsable(false)]
@@ -161,7 +161,7 @@ namespace Hotel {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            EmptyRoomStatistic rpt = new EmptyRoomStatistic();
+            StatusRoomStatistic rpt = new StatusRoomStatistic();
             rpt.Site = this.Site;
             return rpt;
         }

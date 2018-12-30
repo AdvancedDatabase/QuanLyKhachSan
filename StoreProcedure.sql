@@ -1,4 +1,11 @@
-﻿USE QUANLYKHACHSAN
+﻿--USE QUANLYKHACHSAN
+USE QUANLYKHACHSAN_INDEX
+GO
+
+
+IF object_id('SP_MonthlyRevenueReport', 'p') IS NOT NULL
+	DROP PROC SP_MonthlyRevenueReport
+
 GO
 
 -- Thong ke doanh thu theo thang
@@ -30,6 +37,12 @@ END
 
 GO
 
+
+IF object_id('SP_YearRevenueReport', 'p') IS NOT NULL
+	DROP PROC SP_YearRevenueReport
+
+GO
+
 -- Thong ke doanh thu theo nam
 CREATE PROCEDURE SP_YearRevenueReport(
 	@hotel TINYINT,
@@ -55,6 +68,11 @@ BEGIN
 END
 
 --exec SP_YearRevenueReport 84, '2017-1-1', '2018-12-31'
+GO
+
+
+IF object_id('SP_RoomRevenueReport', 'p') IS NOT NULL
+	DROP PROC SP_RoomRevenueReport
 
 GO
 
@@ -87,6 +105,11 @@ END
 
 GO
 
+IF object_id('SP_StatusRoomStatistic', 'p') IS NOT NULL
+	DROP PROC SP_StatusRoomStatistic
+
+GO
+
 -- Thong ke tinh trang phong
 CREATE PROCEDURE SP_StatusRoomStatistic(
 	@hotel TINYINT,
@@ -112,6 +135,11 @@ BEGIN
 	END
 END
 --EXEC SP_StatusRoomStatistic 84, '2008-1-1', '2018-12-31', 15
+
+GO
+
+IF object_id('SP_EmptyRoomStatistics', 'p') IS NOT NULL
+	DROP PROC SP_EmptyRoomStatistics
 
 GO
 
@@ -141,34 +169,90 @@ END
 
 GO
 
-create procedure sp_LogIn_Admin(
-	@tenDangNhap nvarchar(30),
-	@matKhau nvarchar(30),
-	@maKS int=0 output)
-as
-begin
-	--Kiểm tra tên đăng nhập không được null?
-	if(len(@tenDangNhap)=0)
-	begin
-		raiserror(N'Tên đăng nhập không được phép rỗng',16,1)
-		return 0;
-	end	
-	--Kiểm tra mật khẩu không được null
-	if( len(@matKhau)=0)
-	begin 
-		raiserror(N'Mật khẩu không được phép rỗng',16,1)
-		return 0;
-	end
-	--Kiểm tra tính hợp lệ của tên đăng nhập và mật khẩu
-	select @maKS=maKS from NhanVien where @tenDangNhap=tenDangNhap and @matKhau=matKhau
-	if(@maKS > 0)
-	begin
-		return @maKS;
-	end
-	else 
-		raiserror(N'Tên đăng nhập hoặc mật khẩu không đúng',16,1)
-		return 0;
-end
+IF object_id('SP_LogIn_Admin', 'p') IS NOT NULL
+	DROP PROC sp_LogIn_Admin
 
---drop procedure sp_LogIn_Admin
+GO
+
+CREATE PROCEDURE SP_LogIn_Admin(
+	@tenDangNhap NVARCHAR(30),
+	@matKhau NVARCHAR(30),
+	@maKS INT=0 OUTPUT)
+AS
+BEGIN
+	--KIỂM TRA TÊN ĐĂNG NHẬP KHÔNG ĐƯỢC NULL?
+	IF(LEN(@tenDangNhap)=0)
+	BEGIN
+		RAISERROR(N'TÊN ĐĂNG NHẬP KHÔNG ĐƯỢC PHÉP RỖNG',16,1)
+		RETURN 0;
+	END	
+	--KIỂM TRA MẬT KHẨU KHÔNG ĐƯỢC NULL
+	IF( LEN(@matKhau)=0)
+	BEGIN 
+		RAISERROR(N'MẬT KHẨU KHÔNG ĐƯỢC PHÉP RỖNG',16,1)
+		RETURN 0;
+	END
+	--KIỂM TRA TÍNH HỢP LỆ CỦA TÊN ĐĂNG NHẬP VÀ MẬT KHẨU
+	SELECT @maKS=MAKS FROM NHANVIEN WHERE @tenDangNhap=TENDANGNHAP AND @matKhau=MATKHAU
+	IF(@maKS > 0)
+	BEGIN
+		RETURN @maKS;
+	END
+	ELSE 
+		RAISERROR(N'TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU KHÔNG ĐÚNG',16,1)
+		RETURN 0;
+END
+
+--DROP PROCEDURE SP_LOGIN_ADMIN
+
+
+IF object_id('SP_BOOKINGLIST', 'p') IS NOT NULL
+	DROP PROC SP_BOOKINGLIST
+
+GO
+
+--Xem danh sách hóa đơn đang chờ xác nhận
+CREATE PROCEDURE SP_BOOKINGLIST
+	@MAKS INT
+AS
+BEGIN
+	SELECT DP.MADP AS N'Mã đặt phòng', KH.hoTen AS N'Người đặt', P.maPhong AS N'Mã phòng', P.soPhong AS N'Số phòng', DP.NGAYBATDAU AS N'Ngày bắt đầu', DP.NGAYTRAPHONG AS N'Ngày trả phòng', DP.NGAYDAT AS N'Ngày đặt', DP.DONGIA AS N'Đơn giá (đồng)', DP.TINHTRANG AS N'Tình trạng'
+	FROM ((DatPhong DP JOIN LoaiPhong LP ON DP.maLoaiPhong=LP.maLoaiPhong) 
+		JOIN KhachHang KH ON KH.maKH=DP.maKH)
+		JOIN Phong P ON P.maPhong = DP.maPhong
+	WHERE UPPER(DP.TINHTRANG) LIKE N'CHƯA XÁC NHẬN' AND LP.maKS=@MAKS
+END
+
+GO
+
+IF object_id('SP_ConfirmBooking', 'p') IS NOT NULL
+	DROP PROC SP_ConfirmBooking
+
+GO
+
+-- Xác nhận đặt phòng
+CREATE PROCEDURE SP_ConfirmBooking(
+	@maDP INT)
+AS
+BEGIN
+	UPDATE DatPhong
+	SET tinhTrang=N'Đã xác nhận'
+	WHERE maDP=@maDP
+END
+
+GO
+
+IF object_id('SP_CancelBooking', 'p') IS NOT NULL
+	DROP PROC SP_CancelBooking
+
+GO
+
+-- Xác nhận đặt phòng
+CREATE PROCEDURE SP_CancelBooking(
+	@maDP INT)
+AS
+BEGIN
+	DELETE FROM DatPhong
+	WHERE maDP=@maDP
+END
 
