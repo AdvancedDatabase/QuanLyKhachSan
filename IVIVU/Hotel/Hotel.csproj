@@ -102,14 +102,17 @@
     <Compile Include="CheckIn.xaml.cs">
       <DependentUpon>CheckIn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pay.xaml.cs">
       <DependentUpon>Pay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Report_Statistic\MonthlyReport.cs">
-      <DependentUpon>MonthlyReport.rpt</DependentUpon>
+    <Compile Include="Report_Statistic\MonthlyReport1.cs">
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report_Statistic\RoomReport.cs">
       <DependentUpon>RoomReport.rpt</DependentUpon>
@@ -162,6 +165,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,7 +202,7 @@
     </Compile>
     <EmbeddedResource Include="Report_Statistic\MonthlyReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>MonthlyReport.cs</LastGenOutput>
+      <LastGenOutput>MonthlyReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report_Statistic\RoomReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

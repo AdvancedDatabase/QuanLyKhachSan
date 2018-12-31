@@ -33,7 +33,7 @@ BEGIN
 END
 
 --drop procedure SP_MonthlyRevenueReport
---exec SP_MonthlyRevenueReport 84, '2017-1-1', '2018-12-31'
+--exec SP_MonthlyRevenueReport 1, '2018-1-1', '2018-12-31'
 
 GO
 
@@ -67,7 +67,7 @@ BEGIN
 	END
 END
 
---exec SP_YearRevenueReport 84, '2017-1-1', '2018-12-31'
+--exec SP_YearRevenueReport 1, '1/1/2017', '12/31/2018'
 GO
 
 
@@ -259,3 +259,61 @@ BEGIN
 END
 
 GO	
+
+IF object_id('SP_Payment', 'p') IS NOT NULL
+	DROP PROC SP_Payment
+GO
+CREATE PROCEDURE SP_Payment(
+	@maDP INT)
+AS
+BEGIN
+	DECLARE @ngayThanhToan DATETIME
+	DECLARE @tongTien INT
+	DECLARE @ngaybd DATETIME
+	DECLARE @maPhong INT
+	DECLARE @maLoaiPhong INT
+	DECLARE @donGia INT = 0
+
+	SELECT @ngaybd=DP.ngayBatDau FROM DatPhong DP WHERE DP.maDP=@maDP 
+	--Lấy ngày thanh toán bằng ngày trả phòng
+	SELECT @ngayThanhToan=DP.ngayTraPhong FROM DatPhong DP WHERE DP.maDP=@maDP
+	--Lấy mã phòng của phòng đã đặt
+	SELECT @maPhong=DP.maPhong FROM DatPhong DP	WHERE DP.maDP=@maDP
+	--Lấy mã loại phòng đã đặt
+	SET @maLoaiPhong=(SELECT P.loaiPhong FROM Phong P WHERE @maPhong=maPhong)
+	--Lấy đơn giá của phòng đã đặt
+	SELECT @donGia=LP.donGia FROM LoaiPhong LP WHERE LP.maLoaiPhong = @maLoaiPhong
+	--SET trạng thái của phòng đã đặt thành trống
+	UPDATE TrangThaiPhong SET tinhTrang=N'còn trống' WHERE maPhong=@maPhong
+	--Tăng số lượng phòng trống của loại phòng đã đặt lên 1
+	UPDATE LoaiPhong SET slTrong = slTrong + 1 WHERE maLoaiPhong=@maLoaiPhong
+	--Tính tổng tiền
+	SET @tongtien=@donGia * (DATEDIFF(day,@ngaybd,@ngayThanhToan))
+
+	IF(exists( SELECT* FROM DatPhong DP WHERE DP.maDP=@maDP and DP.tinhTrang=N'Đã xác nhận'))
+	BEGIN
+		INSERT INTO HoaDon VALUES(@ngayThanhToan, @tongTien, @maDP)
+	END
+END
+
+GO
+
+/*
+select * 
+from DatPhong dp join LoaiPhong lp on dp.maLoaiPhong=lp.maLoaiPhong
+where year(ngayBatDau)=2018 and lp.maKS=1 and not exists (
+	select * from HoaDon hd where dp.maDP=hd.maDP)
+
+exec SP_ConfirmBooking 1801
+exec SP_Payment 1801
+
+select * from NhanVien where tenDangNhap like 'TerranceJacobs%'
+select * from HoaDon where maDP=1801
+
+SELECT Year(hd.ngayThanhToan) AS N'Năm', SUM(CONVERT(BIGINT, hd.tongTien)) AS N'Doanh thu'
+		FROM ((HoaDon hd JOIN DatPhong dp ON hd.maDP=dp.maDP)
+			JOIN LoaiPhong lp ON dp.maLoaiPhong=lp.maLoaiPhong)
+			JOIN KhachSan ks ON lp.maKS=ks.maKS
+		WHERE ks.maKS = 1 AND (hd.ngayThanhToan BETWEEN '2018-1-1' AND '2018-12-31')
+		GROUP BY hd.ngayThanhToan
+*/

@@ -68,7 +68,7 @@ namespace Hotel
             if (dg_unpaidList.SelectedCells.Count > 0)
             {
                 using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-                using (SqlCommand cmd = new SqlCommand("SP_ThanhToan", conn))
+                using (SqlCommand cmd = new SqlCommand("SP_Payment", conn))
                 {
                     int bookingID = int.Parse(((DataRowView)dg_unpaidList.SelectedItem).Row["Mã đặt phòng"].ToString());
 

@@ -44,6 +44,7 @@ namespace Hotel
             {
                 ReportDocument rpt = new ReportDocument();
                 rpt.Load(@"E:\Year3\Term1\AdvancedDatabase\QuanLyKhachSan\IVIVU\Hotel\Report_Statistic\" + name + ".rpt");
+                //report.SetDatabaseLogon("sa", "password");//if your are using sqlAuthentication
                 rpt.SetParameterValue("@hotel", Login.maKS);
                 rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
                 rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);
