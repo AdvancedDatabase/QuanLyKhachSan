@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,24 +13,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Drawing;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 
 namespace Hotel
 {
     /// <summary>
-    /// Interaction logic for Statistic.xaml
+    /// Interaction logic for UC_Report.xaml
     /// </summary>
-    public partial class Report : Window
+    public partial class UC_Report : UserControl
     {
-        int maKS;
-        public Report()
+        public UC_Report()
         {
             InitializeComponent();
-            maKS = Login.maKS;
         }
 
         private void btn_monthlyReport_Click(object sender, RoutedEventArgs e)
@@ -73,7 +69,7 @@ namespace Hotel
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     rpt.SetDataSource(dt);
-                    rpt.SetParameterValue("@hotel", maKS);
+                    rpt.SetParameterValue("@hotel", Login.maKS);
                     rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
                     rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);
                     crView_Report.ViewerCore.ReportSource = rpt;

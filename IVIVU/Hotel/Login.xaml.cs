@@ -41,25 +41,34 @@ namespace Hotel
                 MessageBox.Show("Hãy nhập mật khẩu!");
             else
             {
-                using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-                using (SqlCommand cmd = new SqlCommand("SP_Login_Admin", conn))
+                try
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@tenDangNhap", SqlDbType.NVarChar);
-                    cmd.Parameters.Add("@matKhau", SqlDbType.NVarChar);
-                    cmd.Parameters.Add("@maKS", SqlDbType.Int);
-                    cmd.Parameters["@tenDangNhap"].Value = txb_username.Text;
-                    cmd.Parameters["@matKhau"].Value = passbox.Password;
-                    cmd.Parameters["@maKS"].Direction = ParameterDirection.Output;
-                    conn.Open();
-                    cmd.ExecuteScalar();
-                    maKS = (int)cmd.Parameters["@maKS"].Value;
-                    conn.Close();
+                    using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
+                    using (SqlCommand cmd = new SqlCommand("SP_Login_Admin", conn))
+                    {
 
-                    wMain window = new wMain();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@tenDangNhap", SqlDbType.NVarChar);
+                        cmd.Parameters.Add("@matKhau", SqlDbType.NVarChar);
+                        cmd.Parameters.Add("@maKS", SqlDbType.Int);
+                        cmd.Parameters["@tenDangNhap"].Value = txb_username.Text;
+                        cmd.Parameters["@matKhau"].Value = passbox.Password;
+                        cmd.Parameters["@maKS"].Direction = ParameterDirection.Output;
+                        conn.Open();
+                        cmd.ExecuteScalar();
+
+                        maKS = (int)cmd.Parameters["@maKS"].Value;
+                        conn.Close();
+                    }
+                    Main window = new Main();
                     this.Hide();
                     window.ShowDialog();
                     this.Show();
+                }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message);
+                    return;
                 }
             }
         }

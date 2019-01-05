@@ -12,18 +12,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Hotel
 {
     /// <summary>
-    /// Interaction logic for Pay.xaml
+    /// Interaction logic for UC_CheckOut.xaml
     /// </summary>
-    public partial class Pay : Window
+    public partial class UC_CheckOut : UserControl
     {
-        public Pay()
+        public UC_CheckOut()
         {
             InitializeComponent();
+        }
+
+        private void uc_CheckOut_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadUnpaidList();
         }
 
         private void LoadUnpaidList()
@@ -85,12 +91,6 @@ namespace Hotel
             {
                 MessageBox.Show("Hãy chọn một đơn đặt phòng!", "THÔNG BÁO");
             }
-        }
-
-
-        private void wPay_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoadUnpaidList();
         }
     }
 }

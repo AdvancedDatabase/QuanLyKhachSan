@@ -12,21 +12,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Hotel
 {
     /// <summary>
-    /// Interaction logic for CheckIn.xaml
+    /// Interaction logic for UC_CheckIn.xaml
     /// </summary>
-    public partial class CheckIn : Window
+    public partial class UC_CheckIn : UserControl
     {
-        public CheckIn()
+        public UC_CheckIn()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             LoadBookingList();
         }

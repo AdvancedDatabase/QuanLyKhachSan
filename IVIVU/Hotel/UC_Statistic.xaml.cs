@@ -1,7 +1,6 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,19 +11,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Drawing;
-using CrystalDecisions.CrystalReports.Engine;
 
 namespace Hotel
 {
     /// <summary>
-    /// Interaction logic for Statistic.xaml
+    /// Interaction logic for UC_Statistic.xaml
     /// </summary>
-    public partial class Statistic : Window
+    public partial class UC_Statistic : UserControl
     {
-        public Statistic()
+        public UC_Statistic()
         {
             InitializeComponent();
         }
@@ -48,7 +45,7 @@ namespace Hotel
                 rpt.SetParameterValue("@hotel", Login.maKS);
                 rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
                 rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);
-                if (name=="StatusRoomStatistic")
+                if (name == "StatusRoomStatistic")
                     rpt.SetParameterValue("@minOfDay", int.Parse(txb_minDay.Text));
                 crView_Statistic.ViewerCore.ReportSource = rpt;
             }
