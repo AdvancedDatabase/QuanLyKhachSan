@@ -1,0 +1,83 @@
+﻿<Window x:Class="Ivivu.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:Ivivu.UserController"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource LoginVM}"
+        Name="loginWindow"
+        Title="Đăng nhập" Height="500" Width="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:UCControlBar Tag="{Binding Title, ElementName=loginWindow}"></uc:UCControlBar>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FFD1D1D1">
+            <Rectangle Height="280" VerticalAlignment="Top">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF2281D1"></GradientStop>
+                        <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
+                        <GradientStop Color="#FF32288B" Offset="0.5"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Height="250" Width="250" VerticalAlignment="Center" Fill="White" RadiusY="21" RadiusX="21">
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="Black" Direction="0" BlurRadius="15" RenderingBias="Quality"></DropShadowEffect>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Grid Height="250" Width="250" VerticalAlignment="Center">
+                <TextBlock Text="ĐĂNG NHẬP" HorizontalAlignment="Center" 
+                           FontWeight="Bold"
+                           VerticalAlignment="Top" Margin="10" FontSize="18"/>
+                <StackPanel HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Width="200">
+                    <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,10"
+                             Text="{Binding UserName}"
+                             FontSize="18"/>
+                    <PasswordBox x:Name="FloatingPasswordBox"
+                                 materialDesign:HintAssist.Hint="Mật khẩu"
+                                 FontSize="18"
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
+                                   CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </PasswordBox>
+                </StackPanel>
+            </Grid>
+            <Button Content="ĐĂNG NHẬP" VerticalAlignment="Bottom" 
+                    Margin="77" Width="120" Background="#FF2B9BF9" 
+                    Foreground="#DDFFFFFF"
+                    IsDefault="True"
+                    BorderBrush="{x:Null}"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=loginWindow}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth3">
+
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

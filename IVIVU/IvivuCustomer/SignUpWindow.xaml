@@ -1,0 +1,150 @@
+﻿<Window x:Class="Ivivu.SignUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:Ivivu.UserController"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:Ivivu"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource SignupVM}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="signUp"
+        Title="Đăng ký" Height="800" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:UCControlBar Tag="{Binding Title, ElementName=signUp}"></uc:UCControlBar>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FFD1D1D1">
+            <Rectangle Height="450" VerticalAlignment="Top">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF2281D1"></GradientStop>
+                        <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
+                        <GradientStop Color="#FF32288B" Offset="0.5"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Height="550" Width="500" VerticalAlignment="Center" Fill="White" RadiusY="21" RadiusX="21">
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="Black" Direction="0" BlurRadius="15" RenderingBias="Quality"></DropShadowEffect>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock Text="ĐĂNG KÝ" HorizontalAlignment="Center" 
+                           FontWeight="Bold"
+                           VerticalAlignment="Top" Margin="140" FontSize="20"/>
+            <Grid Height="400" Width="400" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Grid Grid.Column="0">
+                <StackPanel HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" 
+                            Width="190">
+                        <TextBox materialDesign:HintAssist.Hint="Họ và tên"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                             Text="{Binding FullName}"
+                             FontSize="18"/>
+                        <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding UserName}"
+                             FontSize="18"/>
+                        <PasswordBox x:Name="FloatingPasswordBox"
+                                 materialDesign:HintAssist.Hint="Mật khẩu"
+                                 FontSize="18"
+                                     Margin="2,20"
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
+                                   CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
+
+                        <PasswordBox x:Name="FloatingRetypePasswordBox"
+                                 materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
+                                 FontSize="18"
+                                     Margin="2,20"
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding RetypePasswordChangedCommand}" 
+                                   CommandParameter="{Binding ElementName=FloatingRetypePasswordBox}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
+                    
+                </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <StackPanel HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Width="190">
+                        <TextBox materialDesign:HintAssist.Hint="Địa chỉ"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding Address}"
+                             FontSize="18"/>
+                        <TextBox materialDesign:HintAssist.Hint="Số điện thoại"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding PhoneNumber}"
+                             FontSize="18"/>
+                        <TextBox materialDesign:HintAssist.Hint="Số CMND"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding IdentityNumber}"
+                             FontSize="18"/>
+                        <TextBox materialDesign:HintAssist.Hint="Email"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding Email}"
+                             FontSize="18"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Width="400">
+                <TextBox TextWrapping="Wrap"
+                         VerticalAlignment="Stretch"
+                         MinWidth="280"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto"
+                         SpellCheck.IsEnabled="True"
+                         materialDesign:HintAssist.Hint="Mô tả"
+                         Height="80"
+                         FontSize="18"
+                         Text="{Binding Description}"
+                         Margin="0 0 0 -400">
+                </TextBox>
+            </Grid>
+            <Button Content="ĐĂNG KÝ" VerticalAlignment="Bottom" 
+                    Margin="68" Width="120" Height="50" Background="#FF2B9BF9" 
+                    Foreground="#DDFFFFFF"
+                    BorderBrush="{x:Null}"
+                    IsDefault="True"
+                    Command="{Binding SignupCommand}"
+                    CommandParameter="{Binding ElementName=signUp}"
+                    FontSize="20"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth3"></Button>
+        </Grid>
+    </Grid>
+</Window>
