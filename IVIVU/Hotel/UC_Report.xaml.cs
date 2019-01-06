@@ -59,12 +59,9 @@ namespace Hotel
                 using (SqlCommand cmd = new SqlCommand(spName, conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@hotel", SqlDbType.Int);
-                    cmd.Parameters.Add("@dateBegin", SqlDbType.Date);
-                    cmd.Parameters.Add("@dateEnd", SqlDbType.Date);
-                    cmd.Parameters["@hotel"].Value = Login.maKS;
-                    cmd.Parameters["@dateBegin"].Value = dp_from.SelectedDate.Value.Date;
-                    cmd.Parameters["@dateEnd"].Value = dp_to.SelectedDate.Value.Date;
+                    cmd.Parameters.Add("@hotel", SqlDbType.Int).Value = Login.maKS;
+                    cmd.Parameters.Add("@dateBegin", SqlDbType.Date).Value = dp_from.SelectedDate.Value.Date;
+                    cmd.Parameters.Add("@dateEnd", SqlDbType.Date).Value = dp_to.SelectedDate.Value.Date;
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -72,6 +69,7 @@ namespace Hotel
                     rpt.SetParameterValue("@hotel", Login.maKS);
                     rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
                     rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);
+                    rpt.SetParameterValue("hotelName", Login.hotelName);
                     crView_Report.ViewerCore.ReportSource = rpt;
                 }
             }

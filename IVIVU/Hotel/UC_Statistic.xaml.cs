@@ -45,6 +45,7 @@ namespace Hotel
                 rpt.SetParameterValue("@hotel", Login.maKS);
                 rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);
                 rpt.SetParameterValue("@dateEnd", dp_to.SelectedDate.Value.Date);
+                rpt.SetParameterValue("hotelName", Login.hotelName);
                 if (name == "StatusRoomStatistic")
                     rpt.SetParameterValue("@minOfDay", int.Parse(txb_minDay.Text));
                 crView_Statistic.ViewerCore.ReportSource = rpt;

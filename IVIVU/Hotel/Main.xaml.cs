@@ -72,5 +72,16 @@ namespace Hotel
                     break;
             }
         }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            UserControl usc = null;
+            GridMain.Children.Clear();
+
+            txb_hotelName.Text = Login.hotelName;
+            txb_title.Text = "Nhận phòng";
+            usc = new UC_CheckIn();
+            GridMain.Children.Add(usc);
+        }
     }
 }

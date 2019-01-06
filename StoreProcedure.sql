@@ -1,5 +1,5 @@
 ﻿--USE QUANLYKHACHSAN
-USE QUANLYKHACHSAN
+USE QUANLYKHACHSAN_INDEX
 GO
 
 
@@ -177,42 +177,33 @@ GO
 CREATE PROCEDURE SP_LogIn_Admin(
 	@tenDangNhap NVARCHAR(30),
 	@matKhau NVARCHAR(30),
-	@maKS INT=0 OUTPUT)
+	@maKS INT OUTPUT,
+	@tenKS NVARCHAR(50) OUTPUT,
+	@tenNV NVARCHAR(50) OUTPUT)
 AS
 BEGIN
-	--KIỂM TRA TÊN ĐĂNG NHẬP KHÔNG ĐƯỢC NULL?
-	IF(LEN(@tenDangNhap)=0)
-	BEGIN
-		RAISERROR(N'TÊN ĐĂNG NHẬP KHÔNG ĐƯỢC PHÉP RỖNG',16,1)
-		RETURN 0;
-	END	
-	--KIỂM TRA MẬT KHẨU KHÔNG ĐƯỢC NULL
-	IF( LEN(@matKhau)=0)
-	BEGIN 
-		RAISERROR(N'MẬT KHẨU KHÔNG ĐƯỢC PHÉP RỖNG',16,1)
-		RETURN 0;
-	END
 	--KIỂM TRA TÍNH HỢP LỆ CỦA TÊN ĐĂNG NHẬP VÀ MẬT KHẨU
-	SELECT @maKS=MAKS FROM NHANVIEN WHERE @tenDangNhap=TENDANGNHAP AND @matKhau=MATKHAU
+	SELECT @maKS = maKS, @tenNV = hoTen FROM NhanVien WHERE @tenDangNhap=tenDangNhap AND @matKhau=matKhau
+	SELECT @tenKS = tenKS FROM KhachSan WHERE maKS=@maKS
 	IF(@maKS > 0)
 	BEGIN
-		RETURN @maKS;
+		RETURN 1;
 	END
 	ELSE 
 		RAISERROR(N'TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU KHÔNG ĐÚNG',16,1)
-		RETURN 0;
+		RETURN -1;
 END
 
 --DROP PROCEDURE SP_LOGIN_ADMIN
+GO
 
-
-IF object_id('SP_BOOKINGLIST', 'p') IS NOT NULL
-	DROP PROC SP_BOOKINGLIST
+IF object_id('SP_BookingList', 'p') IS NOT NULL
+	DROP PROC SP_BookingList
 
 GO
 
 --Xem danh sách đặt phòng đang chờ xác nhận
-CREATE PROCEDURE SP_BOOKINGLIST
+CREATE PROCEDURE SP_BookingList
 	@MAKS INT
 AS
 BEGIN
@@ -264,7 +255,8 @@ IF object_id('SP_Payment', 'p') IS NOT NULL
 	DROP PROC SP_Payment
 GO
 CREATE PROCEDURE SP_Payment(
-	@maDP INT)
+	@maDP INT,
+	@maHoaDon INT OUTPUT)
 AS
 BEGIN
 	DECLARE @ngayThanhToan DATETIME
@@ -294,6 +286,7 @@ BEGIN
 	BEGIN
 		INSERT INTO HoaDon VALUES(@ngayThanhToan, @tongTien, @maDP)
 	END
+	SELECT @maHoaDon = MAX(maHD) FROM HoaDon
 END
 
 GO
@@ -307,7 +300,7 @@ where year(ngayBatDau)=2018 and lp.maKS=1 and not exists (
 exec SP_ConfirmBooking 1801
 exec SP_Payment 1801
 
-select * from NhanVien where tenDangNhap like 'TerranceJacobs%'
+select * from NhanVien,KhachSan where tenDangNhap like 'TerranceJacobs' and NhanVien.maKS=KhachSan.maKS
 select * from HoaDon where maDP=1801
 
 SELECT Year(hd.ngayThanhToan) AS N'Năm', SUM(CONVERT(BIGINT, hd.tongTien)) AS N'Doanh thu'
@@ -317,3 +310,7 @@ SELECT Year(hd.ngayThanhToan) AS N'Năm', SUM(CONVERT(BIGINT, hd.tongTien)) AS N
 		WHERE ks.maKS = 1 AND (hd.ngayThanhToan BETWEEN '2018-1-1' AND '2018-12-31')
 		GROUP BY hd.ngayThanhToan
 */
+
+select distinct *
+from Phong p join LoaiPhong lp on lp.maLoaiPhong=p.loaiPhong
+where lp.maKS = 1

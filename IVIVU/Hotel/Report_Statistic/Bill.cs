@@ -16,14 +16,14 @@ namespace Hotel.Report_Statistic {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class MonthlyReport : ReportClass {
+    public class Bill : ReportClass {
         
-        public MonthlyReport() {
+        public Bill() {
         }
         
         public override string ResourceName {
             get {
-                return "MonthlyReport.rpt";
+                return "Bill.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Hotel.Report_Statistic {
         
         public override string FullResourceName {
             get {
-                return "Hotel.Report_Statistic.MonthlyReport.rpt";
+                return "Hotel.Report_Statistic.Bill.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace Hotel.Report_Statistic {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_hotel {
+        public CrystalDecisions.Shared.IParameterField Parameter_maDP {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace Hotel.Report_Statistic {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dateBegin {
+        public CrystalDecisions.Shared.IParameterField Parameter_khachHang {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,7 +106,7 @@ namespace Hotel.Report_Statistic {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dateEnd {
+        public CrystalDecisions.Shared.IParameterField Parameter_donGia {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -114,17 +114,49 @@ namespace Hotel.Report_Statistic {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_hotelName {
+        public CrystalDecisions.Shared.IParameterField Parameter_phong {
             get {
                 return this.DataDefinition.ParameterFields[3];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_ngayBD {
+            get {
+                return this.DataDefinition.ParameterFields[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_ngayKT {
+            get {
+                return this.DataDefinition.ParameterFields[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_maHD {
+            get {
+                return this.DataDefinition.ParameterFields[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_hotelName {
+            get {
+                return this.DataDefinition.ParameterFields[7];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedMonthlyReport : Component, ICachedReport {
+    public class CachedBill : Component, ICachedReport {
         
-        public CachedMonthlyReport() {
+        public CachedBill() {
         }
         
         [Browsable(false)]
@@ -161,7 +193,7 @@ namespace Hotel.Report_Statistic {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            MonthlyReport rpt = new MonthlyReport();
+            Bill rpt = new Bill();
             rpt.Site = this.Site;
             return rpt;
         }

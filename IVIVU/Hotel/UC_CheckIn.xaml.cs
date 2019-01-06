@@ -85,6 +85,8 @@ namespace Hotel
                     cmd.ExecuteNonQuery();
                     LoadBookingList();
                     conn.Close();
+
+                    MessageBox.Show("Nhận phòng thành công!", "Thông báo", MessageBoxButton.OK);
                 }
             }
             else

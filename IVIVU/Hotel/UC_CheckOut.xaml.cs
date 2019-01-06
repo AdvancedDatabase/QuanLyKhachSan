@@ -22,6 +22,10 @@ namespace Hotel
     /// </summary>
     public partial class UC_CheckOut : UserControl
     {
+        public static int bookingID, roomID, cost, billID;
+        public static string customer, roomNumber;
+        public static DateTime datetFrom, dateTo, bookingDate;
+
         public UC_CheckOut()
         {
             InitializeComponent();
@@ -76,15 +80,28 @@ namespace Hotel
                 using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
                 using (SqlCommand cmd = new SqlCommand("SP_Payment", conn))
                 {
-                    int bookingID = int.Parse(((DataRowView)dg_unpaidList.SelectedItem).Row["Mã đặt phòng"].ToString());
+                    bookingID = int.Parse(((DataRowView)dg_unpaidList.SelectedItem).Row["Mã đặt phòng"].ToString());
+                    roomID = int.Parse(((DataRowView)dg_unpaidList.SelectedItem).Row["Mã phòng"].ToString());
+                    cost = int.Parse(((DataRowView)dg_unpaidList.SelectedItem).Row["Đơn giá (đồng)"].ToString());
+                    customer = ((DataRowView)dg_unpaidList.SelectedItem).Row["Người đặt"].ToString();
+                    roomNumber = ((DataRowView)dg_unpaidList.SelectedItem).Row["Số phòng"].ToString();
+                    datetFrom = DateTime.Parse(((DataRowView)dg_unpaidList.SelectedItem).Row["Ngày bắt đầu"].ToString());
+                    dateTo = DateTime.Parse(((DataRowView)dg_unpaidList.SelectedItem).Row["Ngày trả phòng"].ToString());
+                    bookingDate = DateTime.Parse(((DataRowView)dg_unpaidList.SelectedItem).Row["Ngày đặt"].ToString());
 
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@maDP", SqlDbType.Int);
-                    cmd.Parameters["@maDP"].Value = bookingID;
+                    cmd.Parameters.Add("@maDP", SqlDbType.Int).Value = bookingID;
+                    cmd.Parameters.Add("@maHoaDon", SqlDbType.Int);
+                    cmd.Parameters["@maHoaDon"].Direction = ParameterDirection.Output;
                     conn.Open();
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteScalar();
+                    billID = (int)cmd.Parameters["@maHoaDon"].Value;
                     LoadUnpaidList();
+
                     conn.Close();
+
+                    Bill bill = new Bill();
+                    bill.ShowDialog();
                 }
             }
             else

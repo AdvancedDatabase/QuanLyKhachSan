@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Hotel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Main" Height="700" Width="1300" Foreground="White" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        x:Name="MainWindow" Loaded="MainWindow_Loaded"
+        Height="700" Width="1300" 
+        Foreground="White" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -31,23 +33,22 @@
     </Window.Triggers>
     <Grid Background="White">
         <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="635" Width="1225"/>
-        <Grid Height="60" VerticalAlignment="Top" Background="Violet">
+        <Grid Height="60" VerticalAlignment="Top" Background="Orange">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock x:Name="txb_hotelName" Text="Tên khách sạn" Foreground="Blue" VerticalAlignment="Center" FontSize="16"/>
-                <materialDesign:PopupBox Foreground="Blue" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
+                <TextBlock x:Name="txb_hotelName" Text="Tên khách sạn" Foreground="Green" VerticalAlignment="Center" FontSize="16"/>
+                <materialDesign:PopupBox Foreground="Green" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
-                        <Button Content="Settings"/>
-                        <Button Content="Account"/>
-                        <Button Content="Help"/>
+                        <Button Content="Tài khoản" HorizontalAlignment="Center"/>
+                        <Button Content="Giới thiệu" HorizontalAlignment="Center"/>
                         <Separator/>
-                        <Button x:Name="btn_logout" Content="Logout" Click="btn_logout_Click"/>
+                        <Button x:Name="btn_logout" Content="Đăng xuất" HorizontalAlignment="Center" Click="btn_logout_Click"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
-            <TextBlock x:Name="txb_title" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">TuanDoan</TextBlock>
+            <TextBlock x:Name="txb_title" Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">TuanDoan</TextBlock>
         </Grid>
         <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="Orange">
             <Grid.Effect>
@@ -63,49 +64,53 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
+                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Orange" Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </Button>
-                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
+                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Orange" Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
                     </Button>
 
-                    <Image Height="80" VerticalAlignment="Bottom"/>
+                    <Image Height="80" VerticalAlignment="Bottom">
+                        <Image.Source>
+                            <BitmapImage  UriSource="Resource/ivivu-com-logo.png" />
+                        </Image.Source>
+                    </Image>
                 </Grid>
                 <ListView x:Name="ListViewMenu" Foreground="ForestGreen" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
-                    <ListViewItem x:Name="ItemHome" Height="60">
+                    <ListViewItem x:Name="ItemHome" Height="70">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10"/>
+                            <Image Margin="5" Source="Resource/hotel.png"/>
                             <TextBlock Text="Tình trạng phòng" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="CheckIn" Height="60">
+                    <ListViewItem x:Name="CheckIn" Height="70">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Hotel" Height="25" Width="25" Margin="10"/>
+                            <Image Margin="5" Source="Resource/check-in.png"/>
                             <TextBlock Text="Nhận phòng" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="CheckOut" Height="60">
+                    <ListViewItem x:Name="CheckOut" Height="70">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Ticket" Height="25" Width="25" Margin="10"/>
+                            <Image Margin="5" Source="Resource/check-out.png"/>
                             <TextBlock Text="Trả phòng" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="SearchBill" Height="60">
+                    <ListViewItem x:Name="SearchBill" Height="70">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Message" Height="25" Width="25" Margin="10"/>
+                            <Image Margin="5" Source="Resource/search.png"/>
                             <TextBlock Text="Tìm kiếm hóa đơn" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="Report" Height="60">
+                    <ListViewItem x:Name="Report" Height="70">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="HeartOutline" Height="25" Width="25" Margin="10"/>
+                            <Image Margin="5" Source="Resource/report.png"/>
                             <TextBlock Text="Báo cáo" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="Statistic" Height="60">
+                    <ListViewItem x:Name="Statistic" Height="70">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ImageFilterHdr" Height="25" Width="25" Margin="10"/>
+                            <Image Margin="5" Source="Resource/statistics.png"/>
                             <TextBlock Text="Thống kê" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
