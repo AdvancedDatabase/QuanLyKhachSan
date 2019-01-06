@@ -8,44 +8,62 @@
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
     <Grid Background="White">
-        <StackPanel HorizontalAlignment="Left" Height="23" Margin="239,107,0,0" VerticalAlignment="Top" Width="24" RenderTransformOrigin="-16.575,-1.243">
-            <materialDesign:PackIcon Kind="HumanMale" />
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="23" Margin="743,107,0,0" VerticalAlignment="Top" Width="24" RenderTransformOrigin="-16.575,-1.243">
-            <materialDesign:PackIcon Kind="CurrencyUsd" Margin="10,0,-2,0" />
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="58" Margin="249,87,0,0" VerticalAlignment="Top" Width="200">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel 
+                Grid.Column="0"
+                VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <TextBox materialDesign:HintAssist.Hint="Mã khách hàng" FontSize="16"
-                     x:Name="tb_MaKH"
+                <TextBox materialDesign:HintAssist.Hint="Mã khách hàng" FontSize="16"
+                     x:Name="tb_MaKH" Foreground="Black"
                                      Text="{Binding MaKH}"
                                      Margin="8 0 8 0"
                                      Height="40"
                                      VerticalAlignment="Bottom" />
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="58" Margin="494,89,0,0" VerticalAlignment="Top" Width="200">
-            <DatePicker x:Name="dp_date"
+            </StackPanel>
+            <StackPanel 
+                Grid.Column="1"
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+                <DatePicker x:Name="dp_date" Foreground="Black"
                   Width="200"
                   FontSize="16"
                   materialDesign:HintAssist.Hint="Ngày lập hóa đơn"
                   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="58" Margin="767,85,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="1.547,-1.076">
-            <TextBox materialDesign:HintAssist.Hint="Tổng tiền" FontSize="16"
-                     x:Name="tb_tong"
+            </StackPanel>
+            <StackPanel 
+                Grid.Column="2"
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBox materialDesign:HintAssist.Hint="Tổng tiền" FontSize="16"
+                     x:Name="tb_tong" Foreground="Black"
                     Text="{Binding Name}"
                     Margin="8 0 8 0"
                     Height="40"
                     VerticalAlignment="Bottom" TextChanged="Tb_tong_TextChanged" />
-        </StackPanel>
-        <Button
-                Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="526,182,534,449"
-                Click="BtnDatVe" Height="Auto">
+            </StackPanel>
+        </Grid>
+        
+        <Button Grid.Row="2"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                Click="BtnDatVe" Width="100">
             TÌM
         </Button>
-        <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="352" Margin="89,242,0,0" VerticalAlignment="Top" Width="1058"
+        <DataGrid 
+            Grid.Row="3"
+            x:Name="dataGrid1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                   ItemsSource="{Binding Path=Bills}" SelectedItem="{Binding Path=SelectedBill, Mode=TwoWay}"/>
-        <Label x:Name="label" Content="Vui lòng chỉ chọn 1 thông tin cần tìm kiếm." HorizontalAlignment="Left" Margin="494,141,0,0" VerticalAlignment="Top" Width="164" FontStyle="Italic"/>
+        <Label 
+            Grid.Row="1"
+            x:Name="label" Content="Vui lòng chỉ chọn 1 thông tin cần tìm kiếm." HorizontalAlignment="Center" VerticalAlignment="Top" Width="164" FontStyle="Italic"/>
 
     </Grid>
 </UserControl>

@@ -9,36 +9,54 @@
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
     <Grid Background="White">
-        <ComboBox x:Name="loaiPhong"
-        materialDesign:HintAssist.Hint="Chọn loại phòng" Margin="196,102,808,528" SelectionChanged="LoaiPhong_SelectionChanged" Height="39" >
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel/>
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
-        <DatePicker x:Name="dp_dateCheckRoom"                  
-            materialDesign:HintAssist.Hint="Ngày cần kiểm tra"
-            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="730,88,71,531" RenderTransformOrigin="0.5,0.5" >
-            <DatePicker.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="0.544"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="1.419"/>
-                </TransformGroup>
-            </DatePicker.RenderTransform>
-        </DatePicker>
-        <Label x:Name="label" Content="Loại phòng:" HorizontalAlignment="Left" Margin="119,103,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy" Content="Ngày:" HorizontalAlignment="Left" Margin="637,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.606,1.011"/>
-        <DataGrid x:Name="dataGrid2" HorizontalAlignment="Left" Height="354" Margin="52,214,0,0" VerticalAlignment="Top" Width="1074">
-        </DataGrid>
-
-        <Button x:Name="btnLietKePhong"
-            Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="482,154,598,479"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ComboBox 
+                Grid.Column="0"
+                x:Name="loaiPhong"
+                Foreground="Black"
+                Width="300"
+                materialDesign:HintAssist.Hint="Chọn loại phòng" SelectionChanged="LoaiPhong_SelectionChanged" Height="39" >
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <DatePicker
+                    Grid.Column="1"
+                    x:Name="dp_dateCheckRoom"
+                    Width="300"
+                    Foreground="Black"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Ngày cần kiểm tra"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+        </Grid>
+        <Button
+            Grid.Row="1"
+            Width="100"
+            x:Name="btnLietKePhong"
+            Style="{StaticResource MaterialDesignRaisedAccentButton}" 
             Click="BtnLietKe" Content="TÌM" />
-        <Button x:Name="btnChiTiet"
-            Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="1014,599,66,34"
+        <DataGrid Grid.Row="2"
+            x:Name="dataGrid2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        </DataGrid>
+        
+        <Button 
+            Grid.Row="3"
+            Width="100"
+            x:Name="btnChiTiet"
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
             Click="BtnChiTiet" Content="CHI TIẾT"  RenderTransformOrigin="1.286,-0.056"/>
 
     </Grid>
