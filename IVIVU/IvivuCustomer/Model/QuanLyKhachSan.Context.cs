@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ivivu.Model
+namespace IvivuCustomer.Model
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QUANLYKHACHSANEntities : DbContext
     {
@@ -33,5 +35,48 @@ namespace Ivivu.Model
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<Phong> Phongs { get; set; }
         public virtual DbSet<TrangThaiPhong> TrangThaiPhongs { get; set; }
+    
+        [DbFunction("QUANLYKHACHSANEntities", "func_KTTinhTrangPhong")]
+        public virtual IQueryable<func_KTTinhTrangPhong_Result> func_KTTinhTrangPhong(Nullable<int> maks, Nullable<short> maLoaiPhong, Nullable<System.DateTime> ngay)
+        {
+            var maksParameter = maks.HasValue ?
+                new ObjectParameter("maks", maks) :
+                new ObjectParameter("maks", typeof(int));
+    
+            var maLoaiPhongParameter = maLoaiPhong.HasValue ?
+                new ObjectParameter("maLoaiPhong", maLoaiPhong) :
+                new ObjectParameter("maLoaiPhong", typeof(short));
+    
+            var ngayParameter = ngay.HasValue ?
+                new ObjectParameter("ngay", ngay) :
+                new ObjectParameter("ngay", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<func_KTTinhTrangPhong_Result>("[QUANLYKHACHSANEntities].[func_KTTinhTrangPhong](@maks, @maLoaiPhong, @ngay)", maksParameter, maLoaiPhongParameter, ngayParameter);
+        }
+    
+        public virtual int Dat_Phong(Nullable<int> maks, Nullable<int> maLoaiPhong, Nullable<int> maKH, Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayTraPhong)
+        {
+            var maksParameter = maks.HasValue ?
+                new ObjectParameter("maks", maks) :
+                new ObjectParameter("maks", typeof(int));
+    
+            var maLoaiPhongParameter = maLoaiPhong.HasValue ?
+                new ObjectParameter("MaLoaiPhong", maLoaiPhong) :
+                new ObjectParameter("MaLoaiPhong", typeof(int));
+    
+            var maKHParameter = maKH.HasValue ?
+                new ObjectParameter("maKH", maKH) :
+                new ObjectParameter("maKH", typeof(int));
+    
+            var ngayBatDauParameter = ngayBatDau.HasValue ?
+                new ObjectParameter("ngayBatDau", ngayBatDau) :
+                new ObjectParameter("ngayBatDau", typeof(System.DateTime));
+    
+            var ngayTraPhongParameter = ngayTraPhong.HasValue ?
+                new ObjectParameter("ngayTraPhong", ngayTraPhong) :
+                new ObjectParameter("ngayTraPhong", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Dat_Phong", maksParameter, maLoaiPhongParameter, maKHParameter, ngayBatDauParameter, ngayTraPhongParameter);
+        }
     }
 }

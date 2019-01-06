@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ivivu.Model
+namespace IvivuCustomer.Model
 {
     using System;
     using System.Collections.Generic;

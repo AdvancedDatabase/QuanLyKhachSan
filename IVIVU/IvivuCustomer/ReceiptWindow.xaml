@@ -1,0 +1,113 @@
+﻿<Window x:Class="Ivivu.ReceiptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:Ivivu.UserController"
+        xmlns:local="clr-namespace:IvivuCustomer"
+        mc:Ignorable="d"
+        DataContext="{StaticResource ReceiptVM}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="receipt"
+        Title="Hóa đơn" Height="450" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:UCControlBar Tag="{Binding Title, ElementName=receipt}"></uc:UCControlBar>
+        </Grid>
+        <Grid Grid.Row="1">
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" 
+                            Margin="10"
+                            Width="190">
+                    <TextBox materialDesign:HintAssist.Hint="Họ và tên"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                             Text="{Binding FullName}"
+                             FontSize="18"/>
+                    <TextBox materialDesign:HintAssist.Hint="Địa chỉ"
+                             IsEnabled="True"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding Address}"
+                             FontSize="18"/>
+                        <TextBox x:Name="Phone"
+                                 materialDesign:HintAssist.Hint="Số điện thoại"
+                                 FontSize="18"
+                                     Margin="2,20"
+                                 Text="{Binding PhoneNumber}"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" >
+
+                        </TextBox>
+
+                        <TextBox x:Name="FloatingRetypePasswordBox"
+                                 materialDesign:HintAssist.Hint="Tên loại phòng"
+                                 FontSize="18"
+                                 Text="{Binding RoomTypeName}"
+                                     Margin="2,20">
+                        </TextBox>
+                        <TextBox
+                                 materialDesign:HintAssist.Hint="Ngày nhận phòng"
+                                 FontSize="18"
+                                 Text="{Binding ngayNhanPhong}"
+                                     Margin="2,20">
+                        </TextBox>
+
+                    </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel HorizontalAlignment="Right"
+                            Margin="10"
+                                VerticalAlignment="Center"
+                                Width="190">
+                    <TextBox materialDesign:HintAssist.Hint="Tên khách sạn"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding HotelName}"
+                             FontSize="18"/>
+                    <TextBox materialDesign:HintAssist.Hint="Số sao"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding Stars}"
+                             FontSize="18"/>
+                    <TextBox materialDesign:HintAssist.Hint="Thành phố"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding City}"
+                             FontSize="18"/>
+                    <TextBox materialDesign:HintAssist.Hint="Tổng tiền"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="2,20"
+                                 Text="{Binding Total}"
+                             FontSize="18"/>
+                        <TextBox
+                                 materialDesign:HintAssist.Hint="Ngày trả phòng"
+                                 FontSize="18"
+                                 Text="{Binding ngayTraPhong}"
+                                     Margin="2,20">
+                        </TextBox>
+                    </StackPanel>
+            </Grid>
+        </Grid>
+        </Grid>
+    </Grid>
+</Window>

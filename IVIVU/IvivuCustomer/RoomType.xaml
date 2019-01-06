@@ -1,0 +1,63 @@
+﻿<Window x:Class="Ivivu.RoomType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:Ivivu.UserController"
+        xmlns:local="clr-namespace:IvivuCustomer"
+        mc:Ignorable="d"
+        DataContext="{StaticResource RoomTypeVM}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="RoomTypeWindow"
+        Title="Loại phòng" Height="450" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:UCControlBar Tag="{Binding Title, ElementName=RoomTypeWindow}"></uc:UCControlBar>
+        </Grid>
+        <Grid Grid.Row="1" Margin="16">
+            <materialDesign:Card>
+                <ListView ItemsSource="{Binding RoomTypeList}"
+                              MaxHeight="330"
+                              SelectedItem="{Binding SelectedRoomType}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Tên loại phòng" DisplayMemberBinding="{Binding tenLoaiPhong}"></GridViewColumn>
+                            <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding donGia}"></GridViewColumn>
+                            <GridViewColumn Header="Mô tả" DisplayMemberBinding="{Binding moTa}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </materialDesign:Card>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Button
+            VerticalAlignment="Bottom"
+            Width="100"
+            Padding="2 0 2 0"
+            x:Name="btn_BookRoom"
+                Visibility="Collapsed"
+                Content="CHỌN"
+                BorderBrush="{x:Null}"
+                Background="#FF2281D1"
+            Command="{Binding BookRoom}"
+            CommandParameter="{Binding ElementName=btn_BookRoom}"
+            materialDesign:RippleAssist.IsCentered="True">
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

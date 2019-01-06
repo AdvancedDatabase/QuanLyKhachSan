@@ -19,7 +19,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Name="CustomerMainWindow"
-        Title="Ivivu" Height="800" Width="1800">
+        Title="Ivivu" Height="800" Width="1220">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="Converter"/>
     </Window.Resources>
@@ -33,7 +33,6 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
@@ -87,7 +86,14 @@
                 </ListView>
                 
             </Grid>
-            <Button Margin="0 0 0 -500" BorderBrush="{x:Null}" Background="{x:Null}"
+            <Grid>
+                <materialDesign:PackIcon Kind="Login" 
+                                         VerticalAlignment="Bottom" 
+                                         Margin="23,0,0,114" 
+                                         Foreground="White"
+                                         Height="25" Width="25"
+                                         />
+                <Button Margin="0 0 0 -500" BorderBrush="{x:Null}" Background="{x:Null}"
                     Content="Đăng nhập" FontFamily="Arial" 
                     FontSize="18" VerticalAlignment="Center"
                     x:Name="btn_Login"
@@ -95,7 +101,8 @@
                     Command="{Binding LoginButton}"
                     CommandParameter="{Binding ElementName=btn_Login}"
                     Width="220" Height="60" HorizontalAlignment="Left">
-            </Button>
+                </Button>
+            </Grid>
             <Button Margin="0 0 0 -500" BorderBrush="{x:Null}" Background="{x:Null}"
                     Content="Đăng xuất" FontFamily="Arial" 
                     FontSize="18" VerticalAlignment="Center"
@@ -116,6 +123,11 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
                 <materialDesign:Card Height="auto" Width="auto">
                     <GroupBox Header="ĐẶT KHÁCH SẠN ONLINE" Margin="16" Width="500" 
                               Height="auto" HorizontalAlignment="Left">
@@ -125,28 +137,29 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <materialDesign:ColorZone Background="White" Padding="16">
-                                    <DockPanel>
+                                <Grid Grid.Row="0">
+                                    <materialDesign:ColorZone Background="White" Padding="16">
+                                        <DockPanel>
 
-                                        <StackPanel Orientation="Horizontal"
+                                            <StackPanel Orientation="Horizontal"
                                                 materialDesign:RippleAssist.IsCentered="True">
 
-                                            <materialDesign:ColorZone Mode="Standard" Padding="8 4 8 4"
+                                                <materialDesign:ColorZone Mode="Standard" Padding="8 4 8 4"
                                                                   CornerRadius="2"
                                                                   Panel.ZIndex="1"
                                                                   Margin="16 0 0 0"
-                                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1" Height="92" Width="364">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto" />
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Button Style="{DynamicResource MaterialDesignToolButton}">
-                                                        <materialDesign:PackIcon Kind="Magnify" Opacity=".56" Height="28" Width="28" />
-                                                    </Button>
-                                                    <TextBox Grid.Column="1" Margin="8 0 0 0"
+                                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1" Height="92" Width="436">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Style="{DynamicResource MaterialDesignToolButton}"
+                                                                IsDefault="True"
+                                                                Command="{Binding SearchCommand}">
+                                                            <materialDesign:PackIcon Kind="Magnify" Opacity=".56" Height="28" Width="28" />
+                                                        </Button>
+                                                        <TextBox Grid.Column="1" Margin="8 0 0 0"
                                                             materialDesign:HintAssist.Hint="Bạn muốn đi đâu?"
                                                              FontSize="20"
                                                              materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -154,47 +167,15 @@
                                                              MinWidth="200"
                                                              Text="{Binding City}"
                                                              VerticalAlignment="Center" />
-                                                    <Button Style="{DynamicResource MaterialDesignToolButton}"
-                                                        Grid.Column="2">
-                                                        <materialDesign:PackIcon
-                                                        Kind="Microphone"
-                                                            Height="28" Width="28"
-                                                        Opacity=".56"
-                                                        Margin="8 0 0 0" />
-                                                    </Button>
-                                                </Grid>
-                                            </materialDesign:ColorZone>
-                                            <Button
-                                                Style="{DynamicResource MaterialDesignToolForegroundButton}"
-                                                Margin="8 0 0 0"
-                                                IsDefault="True"
-                                                Command="{Binding SearchCommand}"
-                                                Panel.ZIndex="0">
-                                                <materialDesign:PackIcon Kind="Send" Height="28" Width="28" Foreground="Black"/>
-                                            </Button>
-                                        </StackPanel>
-                                    </DockPanel>
-                                </materialDesign:ColorZone>
-                            </Grid>
-                            <Grid Grid.Row="1" Margin="16">
-                                <DatePicker Width="160" materialDesign:HintAssist.Hint="Ngày đặt phòng"
-                                            FontSize="18"
-                                            Margin="16 4 8 4"
-                                            SelectedDate="{Binding NgayDatPhong}"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
-                                            Height="auto"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"/>
-                                <DatePicker Width="160"
-                                            materialDesign:HintAssist.Hint="Ngày trả phòng"
-                                            FontSize="18"
-                                            Margin="8 4 16 4"
-                                            SelectedDate="{Binding NgayTraPhong}"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Top"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                            </Grid>
-                                <Grid Grid.Row="2" Margin="16">
+                                                        
+                                                        
+                                                    </Grid>
+                                                </materialDesign:ColorZone>
+                                            </StackPanel>
+                                        </DockPanel>
+                                    </materialDesign:ColorZone>
+                                </Grid>
+                                <Grid Grid.Row="1" Margin="16">
                                     <ComboBox
                                         materialDesign:HintAssist.Hint="Số sao"
                                         MinWidth="72"
@@ -222,89 +203,114 @@
                                 </Grid>
                             </Grid>
                     </GroupBox>
+                    
                 </materialDesign:Card>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <materialDesign:Card Width="300" Height="290" Margin="59,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="180" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Image Source="E:\Ivivu2\Ivivu\IvivuCustomer\Assets\dulichtheotour-transviet00.jpg"
+                                       Height="160"
+                                       Width="220"
+                                       Stretch="UniformToFill" />
+                                <Button Grid.Row="0"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0 0 16 -9">
+                                    <materialDesign:PackIcon Kind="Bike" />
+                                </Button>
+                                <StackPanel Grid.Row="1"
+                                            Margin="8,10,8,0">
+                                    <TextBlock
+                                        FontWeight="Bold">
+                                        Trải nghiệm kì nghỉ tuyệt vời
+                                    </TextBlock>
+                                    <TextBlock
+                                        TextWrapping="Wrap"
+                                        VerticalAlignment="Center">
+      Combo khách sạn - vé máy bay - đưa đón sân bay giá tốt nhất
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel HorizontalAlignment="Right"
+                                            Grid.Row="2"
+                                            Orientation="Horizontal"
+                                            Margin="8">
+                                    <Button
+                                        Style="{StaticResource MaterialDesignToolButton}"
+                                        Width="30"
+                                        Padding="2 0 2 0"
+                                        materialDesign:RippleAssist.IsCentered="True">
+                                        <materialDesign:PackIcon Kind="ShareVariant" />
+                                    </Button>
+                                    <Button Style="{StaticResource MaterialDesignToolButton}" 
+                                            Width="30"
+                                            Padding="2 0 2 0"
+                                            materialDesign:RippleAssist.IsCentered="True">
+                                        <materialDesign:PackIcon Kind="Heart" />
+                                    </Button>
+                                    <materialDesign:PopupBox Padding="2 0 2 0">
+                                        <StackPanel>
+                                            <Button Content="More" />
+                                            <Button Content="Options" />
+                                        </StackPanel>
+                                    </materialDesign:PopupBox>
+                                </StackPanel>
+                            </Grid>
+                        </materialDesign:Card>
+                    </Grid>
                 </Grid>
-                <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <materialDesign:Card
                         Background="#03a9f4"
                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
                         Padding="0"
                         Width="200">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <TextBlock
-                                Grid.Row="0" HorizontalAlignment="Center"
-                                Margin="16 16 16 4"
-                                Style="{StaticResource MaterialDesignHeadlineTextBlock}">
-                                Tổng đài
-                            </TextBlock>
-                            <Separator Grid.Row="1"
-                                       Style="{StaticResource MaterialDesignLightSeparator}" />
-                            <TextBlock Grid.Row="2" Margin="16 0 16 8"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Style="{StaticResource MaterialDesignBody2TextBlock}">
-                                1900 1900
-                            </TextBlock>
-                            <StackPanel
-                                Grid.Row="2"
-                                Orientation="Horizontal"
-                                Margin="16 0 16 8"
-                                HorizontalAlignment="Right">
-                                <Button
-                                    HorizontalAlignment="Right"
-                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
-                                    Width="30"
-                                    Padding="2 0 2 0"
-                                    materialDesign:RippleAssist.IsCentered="True">
-                                    <materialDesign:PackIcon Kind="Phone" />
-                                </Button>
-                                <Button
-                                    HorizontalAlignment="Right"
-                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
-                                    Width="30"
-                                    Padding="2 0 2 0"
-                                    materialDesign:RippleAssist.IsCentered="True">
-                                    <materialDesign:PackIcon Kind="Message" />
-                                </Button>
-                                <materialDesign:PopupBox
-                                    HorizontalAlignment="Right"
-                                    Padding="2 0 2 0">
-                                    <StackPanel>
-                                        <Button Content="More" />
-                                        <Button Content="Options" />
-                                    </StackPanel>
-                                </materialDesign:PopupBox>
-                            </StackPanel>
-                        </Grid>
+                        
                     </materialDesign:Card>
-                </Grid>
-            </Grid>
-            <Grid Grid.Column="2" Margin="16">
-                <materialDesign:Card>
-                    <ListView ItemsSource="{Binding HotelList}" 
+                    <Grid Margin="16" VerticalAlignment="Top">
+                        <materialDesign:Card>
+                            <ListView ItemsSource="{Binding HotelList}" 
                               Width="950"
-                              MaxHeight="500"
-                              SelectedIndex="{Binding SelectedHotel}">
-                    <ListView.View>
-                            <GridView>
-                            <GridViewColumn Header="Tên khách sạn" DisplayMemberBinding="{Binding tenKS}"></GridViewColumn>
-                            <GridViewColumn Header="Số sao" DisplayMemberBinding="{Binding soSao}"></GridViewColumn>
-                            <GridViewColumn Header="Số nhà" DisplayMemberBinding="{Binding soNha}"></GridViewColumn>
-                            <GridViewColumn Header="Đường" DisplayMemberBinding="{Binding duong}"></GridViewColumn>
-                            <GridViewColumn Header="Quận" DisplayMemberBinding="{Binding quan}"></GridViewColumn>
-                            <GridViewColumn Header="Thành phố" DisplayMemberBinding="{Binding thanhPho}"></GridViewColumn>
-                            <GridViewColumn Header="Giá trung bình" DisplayMemberBinding="{Binding giaTB}"></GridViewColumn>
-                            <GridViewColumn Header="Mô tả" DisplayMemberBinding="{Binding moTa}"></GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                    </ListView>
-                </materialDesign:Card>
+                              MaxHeight="350"
+                              SelectedItem="{Binding SelectedHotel, Mode=OneWayToSource}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Tên khách sạn" DisplayMemberBinding="{Binding tenKS}"></GridViewColumn>
+                                        <GridViewColumn Header="Số sao" DisplayMemberBinding="{Binding soSao}"></GridViewColumn>
+                                        <GridViewColumn Header="Số nhà" DisplayMemberBinding="{Binding soNha}"></GridViewColumn>
+                                        <GridViewColumn Header="Đường" DisplayMemberBinding="{Binding duong}"></GridViewColumn>
+                                        <GridViewColumn Header="Quận" DisplayMemberBinding="{Binding quan}"></GridViewColumn>
+                                        <GridViewColumn Header="Thành phố" DisplayMemberBinding="{Binding thanhPho}"></GridViewColumn>
+                                        <GridViewColumn Header="Giá trung bình" DisplayMemberBinding="{Binding giaTB}"></GridViewColumn>
+                                        <GridViewColumn Header="Mô tả" DisplayMemberBinding="{Binding moTa}"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </materialDesign:Card>
+                        <Button
+                            VerticalAlignment="Bottom"
+                            Width="100"
+                            Padding="2 0 2 0"
+                            Content="CHỌN"
+                            BorderBrush="{x:Null}"
+                            Visibility="Collapsed"
+                            Background="#FF2281D1"
+                            x:Name="btn_hotelDetail"
+                            Command="{Binding HotelDetail}"
+                            CommandParameter="{Binding ElementName=btn_hotelDetail}"
+                            materialDesign:RippleAssist.IsCentered="True" Margin="425,0,425,-47">
+                        </Button>
+                    </Grid>
+                </Grid>
+                
             </Grid>
+            
         </Grid>
     </Grid>
 </Window>

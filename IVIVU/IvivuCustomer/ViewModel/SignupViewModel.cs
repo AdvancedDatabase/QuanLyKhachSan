@@ -1,5 +1,6 @@
 ﻿using Ivivu.Model;
 using Ivivu.ViewModel;
+using IvivuCustomer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

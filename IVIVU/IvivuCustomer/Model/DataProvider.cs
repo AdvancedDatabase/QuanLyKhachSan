@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ivivu.Model;
+using IvivuCustomer.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

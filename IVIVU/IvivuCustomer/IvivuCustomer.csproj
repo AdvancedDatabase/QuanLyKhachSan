@@ -76,12 +76,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\DatPhong.cs">
+      <DependentUpon>QuanLyKhachSan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\func_KTTinhTrangPhong_Result.cs">
       <DependentUpon>QuanLyKhachSan.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HoaDon.cs">
@@ -120,6 +122,15 @@
     <Compile Include="Model\TrangThaiPhong.cs">
       <DependentUpon>QuanLyKhachSan.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrderRoomWindow.xaml.cs">
+      <DependentUpon>OrderRoomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptWindow.xaml.cs">
+      <DependentUpon>ReceiptWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoomType.xaml.cs">
+      <DependentUpon>RoomType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
@@ -132,6 +143,9 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\OrderRoomViewModel.cs" />
+    <Compile Include="ViewModel\ReceiptViewModel.cs" />
+    <Compile Include="ViewModel\RoomTypeViewModel.cs" />
     <Compile Include="ViewModel\SignupViewModel.cs" />
     <Compile Include="ViewModel\VMControlBar.cs" />
     <Page Include="LoginWindow.xaml">
@@ -150,7 +164,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OrderRoomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReceiptWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ResourceXAML\MainResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoomType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,21 +227,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\ivivu.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Assets\dulichtheotour-transviet00.jpg" />
     <Content Include="Model\QuanLyKhachSan.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QuanLyKhachSan.Context.cs</LastGenOutput>
       <DependentUpon>QuanLyKhachSan.edmx</DependentUpon>
+      <LastGenOutput>QuanLyKhachSan.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\QuanLyKhachSan.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QuanLyKhachSan.edmx</DependentUpon>
       <LastGenOutput>QuanLyKhachSan.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ivivu.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

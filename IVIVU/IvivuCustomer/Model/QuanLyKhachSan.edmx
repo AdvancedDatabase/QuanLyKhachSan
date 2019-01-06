@@ -191,6 +191,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ChkTrong_BD_KT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="maks" Type="int" Mode="In" />
+          <Parameter Name="MaPhong" Type="int" Mode="In" />
+          <Parameter Name="MaLoaiPhong" Type="int" Mode="In" />
+          <Parameter Name="NgayBD" Type="datetime" Mode="In" />
+          <Parameter Name="NgayKT" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Dat_Phong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maks" Type="int" Mode="In" />
+          <Parameter Name="MaLoaiPhong" Type="int" Mode="In" />
+          <Parameter Name="maKH" Type="int" Mode="In" />
+          <Parameter Name="ngayBatDau" Type="datetime" Mode="In" />
+          <Parameter Name="ngayTraPhong" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="func_KTTinhTrangPhong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maks" Type="int" Mode="In" />
+          <Parameter Name="maLoaiPhong" Type="smallint" Mode="In" />
+          <Parameter Name="ngay" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="tabmaLP" Type="smallint" />
+                <Property Name="tabtenLP" Type="varchar" MaxLength="30" />
+                <Property Name="tabmaP" Type="smallint" />
+                <Property Name="tabsoP" Type="char" MaxLength="5" />
+                <Property Name="tabngay" Type="datetime" />
+                <Property Name="tabtinhTrangP" Type="nvarchar" MaxLength="15" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="func_Tao_MaDP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char" />
         <EntityContainer Name="QUANLYKHACHSANModelStoreContainer">
           <EntitySet Name="DatPhong" EntityType="Self.DatPhong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
@@ -238,6 +270,14 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QUANLYKHACHSANModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="func_KTTinhTrangPhong_Result">
+          <Property Name="tabmaLP" Type="Int16" />
+          <Property Name="tabtenLP" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tabmaP" Type="Int16" />
+          <Property Name="tabsoP" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="tabngay" Type="DateTime" />
+          <Property Name="tabtinhTrangP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </ComplexType>
         <EntityType Name="DatPhong">
           <Key>
             <PropertyRef Name="maDP" />
@@ -481,6 +521,18 @@
             <End Role="Phong" EntitySet="Phongs" />
             <End Role="TrangThaiPhong" EntitySet="TrangThaiPhongs" />
           </AssociationSet>
+          <FunctionImport Name="func_KTTinhTrangPhong" IsComposable="true" ReturnType="Collection(QUANLYKHACHSANModel.func_KTTinhTrangPhong_Result)">
+            <Parameter Name="maks" Mode="In" Type="Int32" />
+            <Parameter Name="maLoaiPhong" Mode="In" Type="Int16" />
+            <Parameter Name="ngay" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Dat_Phong">
+            <Parameter Name="maks" Mode="In" Type="Int32" />
+            <Parameter Name="MaLoaiPhong" Mode="In" Type="Int32" />
+            <Parameter Name="maKH" Mode="In" Type="Int32" />
+            <Parameter Name="ngayBatDau" Mode="In" Type="DateTime" />
+            <Parameter Name="ngayTraPhong" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -585,6 +637,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionName="QUANLYKHACHSANModel.Store.func_KTTinhTrangPhong" FunctionImportName="func_KTTinhTrangPhong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYKHACHSANModel.func_KTTinhTrangPhong_Result">
+                <ScalarProperty Name="tabmaLP" ColumnName="tabmaLP" />
+                <ScalarProperty Name="tabtenLP" ColumnName="tabtenLP" />
+                <ScalarProperty Name="tabmaP" ColumnName="tabmaP" />
+                <ScalarProperty Name="tabsoP" ColumnName="tabsoP" />
+                <ScalarProperty Name="tabngay" ColumnName="tabngay" />
+                <ScalarProperty Name="tabtinhTrangP" ColumnName="tabtinhTrangP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Dat_Phong" FunctionName="QUANLYKHACHSANModel.Store.Dat_Phong" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

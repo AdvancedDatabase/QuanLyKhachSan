@@ -10,15 +10,14 @@
 namespace IvivuCustomer.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class HoaDon
+    public partial class func_KTTinhTrangPhong_Result
     {
-        public int maHD { get; set; }
-        public System.DateTime ngayThanhToan { get; set; }
-        public int tongTien { get; set; }
-        public int maDP { get; set; }
-    
-        public virtual DatPhong DatPhong { get; set; }
+        public Nullable<short> tabmaLP { get; set; }
+        public string tabtenLP { get; set; }
+        public Nullable<short> tabmaP { get; set; }
+        public string tabsoP { get; set; }
+        public Nullable<System.DateTime> tabngay { get; set; }
+        public string tabtinhTrangP { get; set; }
     }
 }
