@@ -33,7 +33,7 @@ BEGIN
 END
 
 --drop procedure SP_MonthlyRevenueReport
---exec SP_MonthlyRevenueReport 1, '2018-1-1', '2018-12-31'
+--exec SP_MonthlyRevenueReport 1, '2008-1-1', '2018-12-31'
 
 GO
 
@@ -291,26 +291,202 @@ END
 
 GO
 
-/*
-select * 
-from DatPhong dp join LoaiPhong lp on dp.maLoaiPhong=lp.maLoaiPhong
-where year(ngayBatDau)=2018 and lp.maKS=1 and not exists (
-	select * from HoaDon hd where dp.maDP=hd.maDP)
+--Tìm kiếm thông tin hóa đơn
+create  PROC usp_timKiemThongTinHoaDon(@maKS int, @maKH int,@ngayLap datetime, @thanhTien int)
+AS
+BEGIN	
+	create  table tab(
+	 tHoTen nvarchar(50),
+	 tCMND varchar(10),
+	 tSDT varchar(10),
+	 tngayBD date,
+	 tngayKT date,
+	 tmaLoaiphong int,
+	 tTongTien int,
+	 tNgayThanhToan date)
 
-exec SP_ConfirmBooking 1801
-exec SP_Payment 1801
+	DECLARE @hoTen nvarchar(50)
+	DECLARE @CMND varchar(10)
+	DECLARE @sdt varchar(10)
+	declare @maHD int
+	declare @ngayBD datetime
+	declare @ngayKT datetime
+	declare @tongtien int
+	declare @ngaythanhtoan datetime
 
-select * from NhanVien,KhachSan where tenDangNhap like 'TerranceJacobs' and NhanVien.maKS=KhachSan.maKS
-select * from HoaDon where maDP=1801
+	DECLARE @maDP int SET @maDP=0		
+	DECLARE @curmaHD int SET @curmaHD =0
+	DECLARE @curmaDP int SET @curmaDP=0
+	DECLARE @curtongTien int SET @curtongTien=0
+	DECLARE @curngayThanhToan datetime SET @curngayThanhToan=''
+	
+	--Tìm theo thành tiền
+	IF (@thanhTien!=0 and @maKH =0  and @ngayLap is null)
+	BEGIN
+		DECLARE curTimKiemTheoTongTien CURSOR--lấy các dòng có mã hóa đơn có số tiền tương ứng
+		FOR SELECT maHD,maDP,tongTien,ngayThanhToan	FROM HoaDon	WHERE tongTien=@thanhTien
+			
+		OPEN curTimKiemTheoTongTien
+		FETCH NEXT FROM curTimKiemTheoTongTien  INTO @curmaHD, @curmaDP,@curtongTien, @curngayThanhToan
+		
+		if @maKS = (select maKS from loaiphong where maloaiphong = (select maloaiphong from datphong where maDP=@curmaDP))
+		begin
+			WHILE (@@FETCH_STATUS=0)
+			BEGIN
+			--tìm tất Khách hàng có số tiền đó
+				SELECT @hoten=KH.hoTen, @CMND=KH.soCMND, @sdt=KH.soDienThoai, @maHD= @curmaHD, @ngayBD=cast(DP.ngayBatDau as date), @ngayKT=cast(DP.ngayTraPhong as date),@tongtien= @curtongTien ,@ngaythanhtoan=cast(@curngayThanhToan as date)
+				FROM KhachHang KH join (SELECT	* FROM dbo.DatPhong WHERE maDP=@curmaDP) DP	ON  KH.maKH=DP.maKH
+				
+				FETCH NEXT FROM curTimKiemTheoTongTien  INTO @curmaHD, @curmaDP,@curtongTien, @curngayThanhToan
+				
+				insert into tab(thoten,tcmnd, tsdt,tngaybd, tngaykt, ttongtien,tngaythanhtoan)values(@hoten,@cmnd,@sdt, @ngaybd,@ngaykt,@tongtien,@ngaythanhtoan)
+			END
+		end
+		
+		CLOSE curTimKiemTheoTongTien
+		DEALLOCATE curTimKiemTheoTongTien
+	END
+	--Tìm theo ngày lập
+	ELSE IF (@ngayLap is not null and @thanhTien=0 and @maKH =0)
+	BEGIN
+		DECLARE curTimKiemTheoNgayLap CURSOR FOR SELECT maHD,maDP,tongTien,ngayThanhToan FROM HoaDon WHERE cast (ngayThanhToan as date)=cast (@ngayLap as date)
+			
+		OPEN curTimKiemTheoNgayLap
+		FETCH NEXT FROM curTimKiemTheoNgayLap  INTO @curmaHD, @curmaDP,@curtongTien, @curngayThanhToan
+		
+		if @maKS = (select maKS from loaiphong where maloaiphong = (select maloaiphong from datphong where maDP=@curmaDP))
+		begin
+			WHILE (@@FETCH_STATUS=0)
+			BEGIN					
+				--tìm tất Khách hàng có ngày lập hóa đơn đó
+				SELECT @hoten=KH.hoTen, @cmnd=KH.soCMND, @sdt=KH.soDienThoai, @ngaybd=DP.ngayBatDau, @ngaykt=DP.ngayTraPhong, @tongtien= @curtongTien ,@ngaythanhtoan=@curngayThanhToan
+				FROM KhachHang KH JOIN (SELECT * FROM  dbo.DatPhong WHERE maDP=@curmaDP) DP	ON  KH.maKH=DP.maKH
+				
+				insert into tab(thoten,tcmnd, tsdt,tngaybd, tngaykt, ttongtien,tngaythanhtoan)
+				values(@hoten,@cmnd,@sdt, @ngaybd,@ngaykt,@tongtien,@ngaythanhtoan)
+				
+				FETCH NEXT FROM curTimKiemTheoNgayLap  INTO @curmaHD, @curmaDP,@curtongTien, @curngayThanhToan
+			END
+		end
+		
+		CLOSE curTimKiemTheoNgayLap
+		DEALLOCATE curTimKiemTheoNgayLap
+	END
+	--Tìm theo mã KH
+	ELSE IF (@maKH <>0 and @ngayLap is null and @thanhTien = 0)
+	BEGIN	
+		select @hoten=hoten, @CMND=soCMND, @sdt=soDienThoai	from khachhang	where maKh=@makh		
+		declare @curngayBD datetime
+		declare @curngayKT datetime
+		declare @curmaloaiphong int
+		
+		declare curKHDP cursor	for select ngayBatDau,ngaytraPhong,maloaiphong,maDP	from DatPhong where maKH=@maKH
+		
+		OPEN curKHDP
+		FETCH NEXT FROM curKHDP  INTO @curngaybd, @curngayKT, @curmaloaiphong, @curmaDP
+		
+		while (@@FETCH_STATUS=0)
+		begin
+			if @curmaloaiphong in (select maloaiphong from loaiphong where maKs=@maKS)
+			begin				
+				SELECT @ngaybd=DP.ngayBatDau, @ngaykt=DP.ngayTraPhong, @tongtien=HD.tongTien , @ngaythanhtoan=HD.ngayThanhToan
+				FROM (SELECT * FROM	dbo.DatPhong WHERE maDP=@curmaDP) DP join  HoaDon HD ON  HD.maDP=DP.maDP
+					
+				insert into tab(thoten,tcmnd, tsdt,tngaybd, tngaykt, ttongtien,tngaythanhtoan)
+				values(@hoten,@cmnd,@sdt, @ngaybd,@ngaykt,@tongtien,@ngaythanhtoan)
+					
+			end
+			FETCH NEXT FROM curKHDP  INTO  @curngaybd, @curngayKT, @curmaloaiphong, @curmaDP
+		end
+		
+		CLOSE curKHDP
+		DEALLOCATE curKHDP
+	END
+	
+	select * from tab
+	if OBJECT_ID('dbo.tab', 'u') is  not null drop table tab
+END
+go
 
-SELECT Year(hd.ngayThanhToan) AS N'Năm', SUM(CONVERT(BIGINT, hd.tongTien)) AS N'Doanh thu'
-		FROM ((HoaDon hd JOIN DatPhong dp ON hd.maDP=dp.maDP)
-			JOIN LoaiPhong lp ON dp.maLoaiPhong=lp.maLoaiPhong)
-			JOIN KhachSan ks ON lp.maKS=ks.maKS
-		WHERE ks.maKS = 1 AND (hd.ngayThanhToan BETWEEN '2018-1-1' AND '2018-12-31')
-		GROUP BY hd.ngayThanhToan
-*/
+--Liệt kê danh sách các loại phòng tại ks
+create proc proc_DSLoaiPhong(@maKS int)
+as
+begin
+	select maloaiphong, tenloaiphong  from Loaiphong where maKs=@maKS
+end
 
-select distinct *
-from Phong p join LoaiPhong lp on lp.maLoaiPhong=p.loaiPhong
-where lp.maKS = 1
+GO
+
+--Kiểm tra tình trạng phòng
+create proc proc_KTTinhTrangPhong(@maKS int, @maLoaiPhong int, @ngay datetime)
+AS
+BEGIN
+	create  table tab1
+	(tabmaLP smallint,
+	tabtenLP varchar(30),
+	tabmaP smallint,
+	tabsoP char(5),
+	tabngay datetime,
+	tabtinhTrangP nvarchar(15))	
+	
+	IF (@maLoaiPhong in (SELECT maLoaiPhong from LoaiPhong where maKS=@maKS))
+	BEGIN
+		DECLARE @tenLoaiPhong varchar(30)
+		DECLARE @donGia int 
+		DECLARE @moTa nvarchar(255)
+		DECLARE @slTrong int  
+	
+		select @tenLoaiPhong=tenLoaiPhong from LoaiPhong where maLoaiPhong=@maLoaiPhong
+		DECLARE @curmaPhong int 
+		DECLARE @cursoPhong char(5) 
+		
+		DECLARE curPhong CURSOR	FOR (SELECT maPhong,soPhong	FROM Phong	WHERE loaiPhong=@maLoaiPhong)		
+		OPEN curPhong
+		FETCH NEXT FROM curPhong INTO @curmaPhong,@cursoPhong
+		
+		--trả về đang bảo trì | đang sử dụng | còn trống	
+		DECLARE @ngayTinhTrangP datetime 
+		DECLARE @tinhTrangP nvarchar(15)	
+		WHILE (@@FETCH_STATUS=0)
+		BEGIN		
+			IF (@ngay is not null or @ngay <>'')
+			BEGIN
+				set @tinhTrangP=''				
+				if exists (select * from TrangThaiPhong where maPhong=@curmaphong)
+				begin
+					SELECT @ngayTinhTrangP=ngay, @tinhTrangP=tinhTrang FROM TrangThaiPhong	WHERE maPhong=@curmaPhong and cast(ngay as date)=cast(@ngay as date)
+					if  (@tinhTrangP<>'')
+					begin
+						INSERT into tab1(tabmaLP,tabtenLP ,tabmaP ,tabsoP ,tabngay,tabtinhTrangP) VALUES(@maLoaiPhong,@tenLoaiPhong,@curmaPhong,@cursoPhong, @ngayTinhTrangP,@tinhTrangP)
+					end
+				end
+			END			
+			FETCH NEXT FROM curPhong INTO @curmaPhong,@cursoPhong
+		END		
+		CLOSE curPhong
+		DEALLOCATE curPhong
+	END	
+	select * from tab1
+	if OBJECT_ID('dbo.tab1', 'u') is  not null	drop table tab1
+END
+GO
+
+
+--Chi tiết phòng 
+create proc proc_ChiTietPhong(@maKS int, @maLoaiPhong int, @maPhong int, @ngay datetime, @tinhtrang nvarchar(15))
+as
+begin
+	if @maKS in (select maKS from loaiphong where maloaiphong=@maloaiphong)
+	begin
+		declare @tenloaiphong nvarchar(30)
+		declare @dongia int
+		declare @mota nvarchar(255)		
+		select @tenloaiphong=tenloaiphong, @dongia=dongia, @mota=mota from loaiphong where maKs=@maks and maloaiphong=@maloaiphong
+		
+		declare @sophong char(5)		
+		select @sophong=sophong	from phong where loaiphong=@maloaiphong	
+			
+		select @tenloaiphong, @sophong, @dongia,@mota, @ngay, @tinhtrang
+	end
+end
+go

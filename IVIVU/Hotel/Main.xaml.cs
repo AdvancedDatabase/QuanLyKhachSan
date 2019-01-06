@@ -68,6 +68,16 @@ namespace Hotel
                     usc = new UC_Report();
                     GridMain.Children.Add(usc);
                     break;
+                case "RoomStatus":
+                    txb_title.Text = "Trạng thái phòng";
+                    usc = new ListRoom();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "SearchBill":
+                    txb_title.Text = "Tìm kiếm hóa đơn";
+                    usc = new UC_FindBill();
+                    GridMain.Children.Add(usc);
+                    break;
                 default:
                     break;
             }

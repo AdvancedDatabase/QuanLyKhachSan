@@ -78,7 +78,7 @@
                     </Image>
                 </Grid>
                 <ListView x:Name="ListViewMenu" Foreground="ForestGreen" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
-                    <ListViewItem x:Name="ItemHome" Height="70">
+                    <ListViewItem x:Name="RoomStatus" Height="70">
                         <StackPanel Orientation="Horizontal">
                             <Image Margin="5" Source="Resource/hotel.png"/>
                             <TextBlock Text="Tình trạng phòng" VerticalAlignment="Center" Margin="20 10"/>

@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Hotel.UC_FindBill"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"         
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1200">
+    <Grid Background="White">
+        <StackPanel HorizontalAlignment="Left" Height="23" Margin="239,107,0,0" VerticalAlignment="Top" Width="24" RenderTransformOrigin="-16.575,-1.243">
+            <materialDesign:PackIcon Kind="HumanMale" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="23" Margin="743,107,0,0" VerticalAlignment="Top" Width="24" RenderTransformOrigin="-16.575,-1.243">
+            <materialDesign:PackIcon Kind="CurrencyUsd" Margin="10,0,-2,0" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="58" Margin="249,87,0,0" VerticalAlignment="Top" Width="200">
+
+            <TextBox materialDesign:HintAssist.Hint="Mã khách hàng" FontSize="16"
+                     x:Name="tb_MaKH"
+                                     Text="{Binding MaKH}"
+                                     Margin="8 0 8 0"
+                                     Height="40"
+                                     VerticalAlignment="Bottom" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="58" Margin="494,89,0,0" VerticalAlignment="Top" Width="200">
+            <DatePicker x:Name="dp_date"
+                  Width="200"
+                  FontSize="16"
+                  materialDesign:HintAssist.Hint="Ngày lập hóa đơn"
+                  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="58" Margin="767,85,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="1.547,-1.076">
+            <TextBox materialDesign:HintAssist.Hint="Tổng tiền" FontSize="16"
+                     x:Name="tb_tong"
+                    Text="{Binding Name}"
+                    Margin="8 0 8 0"
+                    Height="40"
+                    VerticalAlignment="Bottom" TextChanged="Tb_tong_TextChanged" />
+        </StackPanel>
+        <Button
+                Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="526,182,534,449"
+                Click="BtnDatVe" Height="Auto">
+            TÌM
+        </Button>
+        <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="352" Margin="89,242,0,0" VerticalAlignment="Top" Width="1058"
+                  ItemsSource="{Binding Path=Bills}" SelectedItem="{Binding Path=SelectedBill, Mode=TwoWay}"/>
+        <Label x:Name="label" Content="Vui lòng chỉ chọn 1 thông tin cần tìm kiếm." HorizontalAlignment="Left" Margin="494,141,0,0" VerticalAlignment="Top" Width="164" FontStyle="Italic"/>
+
+    </Grid>
+</UserControl>
