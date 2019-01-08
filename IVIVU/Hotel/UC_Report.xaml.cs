@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -43,6 +44,17 @@ namespace Hotel
             CallReport("RoomReport", "SP_RoomRevenueReport");
         }
 
+        private string GetPath(string fileName)
+        {
+            //MessageBox.Show(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+            //MessageBox.Show(System.IO.Directory.GetCurrentDirectory());
+            //MessageBox.Show(System.Environment.CurrentDirectory);
+            string path = System.IO.Directory.GetCurrentDirectory();
+            path = path.Substring(0, Math.Max(0, path.Length - 10));
+            path += "\\Report_Statistic\\" + fileName + ".rpt";
+            return path;
+        }
+
         private void CallReport(string fileName, string spName)
         {
             if (string.IsNullOrEmpty(dp_from.Text))
@@ -52,8 +64,7 @@ namespace Hotel
             else
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(@"E:\Year3\Term1\AdvancedDatabase\QuanLyKhachSan\IVIVU\Hotel\Report_Statistic\" + fileName + ".rpt");
-                //"" + GetCurrentPath()[0] + "Reports\\" + rptName + ""
+                rpt.Load(GetPath(fileName));
                 //report.SetDatabaseLogon("sa", "password");//if your are using sqlAuthentication
                 using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
                 using (SqlCommand cmd = new SqlCommand(spName, conn))

@@ -1,5 +1,5 @@
-﻿--USE QUANLYKHACHSAN
-USE QUANLYKHACHSAN_INDEX
+﻿USE QUANLYKHACHSAN
+--USE QUANLYKHACHSAN_INDEX
 GO
 
 
@@ -33,7 +33,8 @@ BEGIN
 END
 
 --drop procedure SP_MonthlyRevenueReport
---exec SP_MonthlyRevenueReport 1, '2008-1-1', '2018-12-31'
+--exec SP_MonthlyRevenueReport 1, '2017-1-1', '2018-12-31'
+select * from NhanVien where maKS=1
 
 GO
 
@@ -134,7 +135,7 @@ BEGIN
 		RETURN 0
 	END
 END
---EXEC SP_StatusRoomStatistic 84, '2008-1-1', '2018-12-31', 15
+--EXEC SP_StatusRoomStatistic 1, '2008-1-1', '2018-12-31', 15
 
 GO
 
@@ -165,7 +166,7 @@ BEGIN
 		RETURN 0
 	END
 END
---EXEC SP_EmptyRoomStatistics 84, '2018-1-1', '2018-1-31'
+--EXEC SP_EmptyRoomStatistics 1, '2018-1-1', '2018-1-31'
 
 GO
 

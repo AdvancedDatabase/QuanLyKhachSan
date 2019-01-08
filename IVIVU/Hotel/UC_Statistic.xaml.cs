@@ -26,6 +26,17 @@ namespace Hotel
             InitializeComponent();
         }
 
+        private string GetPath(string fileName)
+        {
+            //MessageBox.Show(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+            //MessageBox.Show(System.IO.Directory.GetCurrentDirectory());
+            //MessageBox.Show(System.Environment.CurrentDirectory);
+            string path = System.IO.Directory.GetCurrentDirectory();
+            path = path.Substring(0, Math.Max(0, path.Length - 10));
+            path += "\\Report_Statistic\\" + fileName + ".rpt";
+            return path;
+        }
+
         private void CallStatistic(string name)
         {
             if (name == "StatusRoomStatistic" && string.IsNullOrEmpty(txb_minDay.Text))
@@ -40,7 +51,7 @@ namespace Hotel
             else
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(@"E:\Year3\Term1\AdvancedDatabase\QuanLyKhachSan\IVIVU\Hotel\Report_Statistic\" + name + ".rpt");
+                rpt.Load(GetPath(name));
                 //report.SetDatabaseLogon("sa", "password");//if your are using sqlAuthentication
                 rpt.SetParameterValue("@hotel", Login.maKS);
                 rpt.SetParameterValue("@dateBegin", dp_from.SelectedDate.Value.Date);

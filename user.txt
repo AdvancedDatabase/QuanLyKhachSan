@@ -1,0 +1,7 @@
+Big:
+	AnaNielsen (khach san 1)
+	AngelinaCharles
+
+Small:
+	TerranceJacobs
+	RudyArnold
