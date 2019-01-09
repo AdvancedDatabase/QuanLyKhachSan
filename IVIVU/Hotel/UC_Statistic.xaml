@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="Hotel.UC_Statistic"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1200">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <DatePicker
+                    x:Name="dp_from"
+                    Width="300"
+                    Foreground="Black"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Ngày bắt đầu"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <DatePicker
+                    x:Name="dp_to"
+                    Width="300"
+                    Foreground="Black"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Ngày kết thúc"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            </Grid>
+            <TextBox
+                Grid.Column="2"
+                x:Name="txb_minDay"
+                Width="300"
+                Foreground="Black"
+                materialDesign:HintAssist.Hint="Số ngày tối thiểu"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                x:Name="btn_SttRoom"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                Width="300"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton" Click="btn_SttRoom_Click">
+                Thống kê tình trạng phòng
+            </Button>
+            <Button Grid.Column="1"
+                x:Name="btn_emptyRoom"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                Width="300"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton" Click="btn_emptyRoom_Click">
+                Thống kê số lượng phòng trống
+            </Button>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Viewer:CrystalReportsViewer
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                x:Name="crView_Statistic"/>
+        </Grid>
+    </Grid>
+</UserControl>

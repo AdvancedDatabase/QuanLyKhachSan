@@ -1,0 +1,19 @@
+﻿<Window x:Class="Hotel.Bill"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel"
+        xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
+        mc:Ignorable="d"
+        Title="Hóa đơn" Height="450" Width="800"
+        x:Name="billWindow" Loaded="billWindow_Loaded">
+    <Grid>
+        <Grid>
+            <Viewer:CrystalReportsViewer
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                x:Name="crView_Statistic"/>
+        </Grid>
+    </Grid>
+</Window>

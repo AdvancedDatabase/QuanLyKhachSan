@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +24,7 @@ namespace Hotel
     public partial class Login : Window
     {
         public static int maKS;
+        public static string hotelName, employeeName;
         public Login()
         {
             InitializeComponent();
@@ -41,25 +43,36 @@ namespace Hotel
                 MessageBox.Show("Hãy nhập mật khẩu!");
             else
             {
-                using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
-                using (SqlCommand cmd = new SqlCommand("sp_Login_Admin", conn))
+                try
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@tenDangNhap", SqlDbType.NVarChar);
-                    cmd.Parameters.Add("@matKhau", SqlDbType.NVarChar);
-                    cmd.Parameters.Add("@maKS", SqlDbType.Int);
-                    cmd.Parameters["@tenDangNhap"].Value = txb_username.Text;
-                    cmd.Parameters["@matKhau"].Value = passbox.Password;
-                    cmd.Parameters["@maKS"].Direction = ParameterDirection.Output;
-                    conn.Open();
-                    cmd.ExecuteScalar();
-                    maKS = (int)cmd.Parameters["@maKS"].Value;
-                    conn.Close();
+                    using (SqlConnection conn = new SqlConnection(Connection.connectionString()))
+                    using (SqlCommand cmd = new SqlCommand("SP_Login_Admin", conn))
+                    {
 
-                    wMain window = new wMain();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@tenDangNhap", SqlDbType.NVarChar).Value = txb_username.Text;
+                        cmd.Parameters.Add("@matKhau", SqlDbType.NVarChar).Value = passbox.Password;
+                        cmd.Parameters.Add("@maKS", SqlDbType.Int);
+                        cmd.Parameters.Add("@tenKS", SqlDbType.NVarChar, 50);
+                        cmd.Parameters.Add("@tenNV", SqlDbType.NVarChar, 50);
+                        cmd.Parameters["@maKS"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@tenKS"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@tenNV"].Direction = ParameterDirection.Output;
+                        conn.Open();
+                        cmd.ExecuteScalar();
+                        maKS = (int)cmd.Parameters["@maKS"].Value;
+                        hotelName = (string)cmd.Parameters["@tenKS"].Value;
+                        employeeName = (string)cmd.Parameters["@tenNV"].Value;
+                        conn.Close();
+                    }
+                    Main window = new Main();
                     this.Hide();
                     window.ShowDialog();
                     this.Show();
+                }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message, "Thông báo", MessageBoxButton.OK);
                 }
             }
         }
